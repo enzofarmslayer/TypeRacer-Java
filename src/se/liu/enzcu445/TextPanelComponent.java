@@ -28,7 +28,7 @@ public class TextPanelComponent extends JPanel {
 	Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 	this.setBorder(blackBorder);
 
-	sentenceGenerator = new SentenceGenerator("resources/wordlist.json");
+	sentenceGenerator = new SentenceGenerator("wordlist.json");
 	typingHandler = new TypingLogicHandler(sentencePane, sentenceGenerator.generateSentence(2), typingEventListener);
     }
 
@@ -42,5 +42,9 @@ public class TextPanelComponent extends JPanel {
 
     public SentenceGenerator getSentenceGenerator() {
 	return sentenceGenerator;
+    }
+
+    public void resetDisplaySentence() {
+	typingHandler.displaySentence();
     }
 }

@@ -5,22 +5,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Timer {
-    private int secondsElapsed = 0;
+    private int hundredthsElapsed = 0;
     private javax.swing.Timer swingTimer;
 
     public Timer() {
-	swingTimer = new javax.swing.Timer(1000, new ActionListener() {
+	// Set timer interval to 10 milliseconds (0.01 seconds)
+	swingTimer = new javax.swing.Timer(10, new ActionListener() {
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-		secondsElapsed++;
+		hundredthsElapsed++;
 		tick();
 	    }
 	});
-	//start();
     }
 
     protected void tick() {
-	// Notify observers each second
+	// Notify observers (if any) each 0.01 second
     }
 
     public void start() {
@@ -31,12 +31,12 @@ public class Timer {
 	swingTimer.stop();
     }
 
-    public int getSecondsElapsed() {
-	return secondsElapsed;
+    public int getHundredthsElapsed() {
+	return hundredthsElapsed;
     }
 
     public void reset() {
-	secondsElapsed = 0;
+	hundredthsElapsed = 0;
 	tick();  // Update immediately on reset
     }
 }

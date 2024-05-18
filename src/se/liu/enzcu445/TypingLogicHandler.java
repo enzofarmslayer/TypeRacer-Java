@@ -18,9 +18,12 @@ public class TypingLogicHandler {
     private TypingEventListener typingEventListener;
     private boolean typingStarted = false;
 
+    // Fields for accuracy and CPM calculations
     private double currentAccuracy;
     private double sumAccuracy;
     private int accuracyCount;
+    private double totalCpm = 0.0;
+    private int cpmCount = 0;
 
     public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) {
 	this.textPane = textPane;
@@ -53,7 +56,7 @@ public class TypingLogicHandler {
 	freeze = freezeCondition;
     }
 
-    private void displaySentence() {
+    void displaySentence() {
 	try {
 	    StyledDocument doc = textPane.getStyledDocument();
 	    doc.remove(0, doc.getLength());
@@ -61,6 +64,21 @@ public class TypingLogicHandler {
 	} catch (BadLocationException e) {
 	    e.printStackTrace();
 	}
+	updateCaretPosition();
+    }
+
+    public void resetVariables() {
+	typedLength = 0;
+	errorPositions.clear();
+	isFinished = false;
+	typingStarted = false;
+	freeze = false;
+	updateCaretPosition();
+    }
+
+    public void setTargetSentence(String sentence) {
+	this.targetSentence = sentence;
+	displaySentence();
     }
 
     private void handleKeyPress(KeyEvent e) {
@@ -127,17 +145,9 @@ public class TypingLogicHandler {
     }
 
     public void saveCurrentAccuracy() {
-	this.currentAccuracy = calculateAccuracy();
-	this.sumAccuracy += currentAccuracy;
-	this.accuracyCount++;
-    }
-
-    public double getCurrentAccuracy() {
-	return currentAccuracy;
-    }
-
-    public double getSumAccuracy() {
-	return sumAccuracy;
+	currentAccuracy = calculateAccuracy();
+	sumAccuracy += currentAccuracy;
+	accuracyCount++;
     }
 
     public double calculateAverageAccuracy() {
@@ -145,5 +155,17 @@ public class TypingLogicHandler {
 	    return 100.0; // Default to 100% if no accuracy records
 	}
 	return sumAccuracy / accuracyCount;
+    }
+
+    public void saveCurrentCpm(double cpm) {
+	totalCpm += cpm;
+	cpmCount++;
+    }
+
+    public double calculateAverageCpm() {
+	if (cpmCount == 0) {
+	    return 0.0;
+	}
+	return totalCpm / cpmCount;
     }
 }

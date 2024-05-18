@@ -16,23 +16,29 @@ public class SpeedtyperViewer extends JFrame {
 
         Timer timer = new Timer();
         TimerLabel timerLabel = new TimerLabel(timer);
-        topPanel.add(timerLabel.getDisplayLabel());
+        topPanel.add(timerLabel);
 
         TextPanelComponent textPanel = new TextPanelComponent(null); // Initially pass null
 
         AverageAccuracyLabel averageAccuracyLabel = new AverageAccuracyLabel(textPanel);
-        CurrentAccuracyLabel currentAccuracyLabel = new CurrentAccuracyLabel(textPanel);
+        AverageCpmLabel averageCpmLabel = new AverageCpmLabel(textPanel,timer);
 
-        TypingEventHandler typingEventHandler = new TypingEventHandler(timer, averageAccuracyLabel);
-
-        textPanel.setTypingCompletionHandler(typingEventHandler); // Set the handler after creation
-        textPanel.getTypingHandler().setTypingEventListener(typingEventHandler); // Set typing event listener
+        SessionAccuracyLabel sessionAccuracyLabel = new SessionAccuracyLabel(textPanel);
+        SessionCpmLabel sessionCpmLabel = new SessionCpmLabel(textPanel, timer);
 
         PauseController pauseController = new PauseController(timer, textPanel);
         PauseButton pauseButton = new PauseButton(pauseController);
 
+        TypingEventHandler typingEventHandler = new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel,
+                                                                       pauseButton, sessionAccuracyLabel, sessionCpmLabel, textPanel);
+
+        textPanel.setTypingCompletionHandler(typingEventHandler); // Set the handler after creation
+        textPanel.getTypingHandler().setTypingEventListener(typingEventHandler); // Set typing event listener
+
         topPanel.add(pauseButton);
+        topPanel.add(averageCpmLabel);
         topPanel.add(averageAccuracyLabel);
+
 
         topPanel.setPreferredSize(new Dimension(frame.getWidth(), 100));
         frame.add(topPanel, BorderLayout.NORTH);

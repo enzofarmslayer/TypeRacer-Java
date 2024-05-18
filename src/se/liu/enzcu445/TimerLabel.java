@@ -3,33 +3,29 @@ package se.liu.enzcu445;
 import javax.swing.*;
 import java.awt.*;
 
-public class TimerLabel {
-    private JLabel displayLabel;
+public class TimerLabel extends JLabel {
     private Timer timer;
 
     public TimerLabel(Timer timer) {
+	super("Time: 0:00.00", SwingConstants.CENTER);  // Set initial text and alignment
 	this.timer = timer;
-	displayLabel = new JLabel("Time: 0:00", SwingConstants.CENTER);
-	displayLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-	displayLabel.setOpaque(true);
-	displayLabel.setBackground(Color.WHITE);
+	setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+	setOpaque(true);
+	setBackground(Color.WHITE);
 	setupTimer();
     }
 
     private void setupTimer() {
-	// Assuming Timer has a way to attach listeners
-	javax.swing.Timer swingTimer = new javax.swing.Timer(1000, e -> updateLabel());
+	javax.swing.Timer swingTimer = new javax.swing.Timer(10, e -> updateLabel());
 	swingTimer.start();
     }
 
     private void updateLabel() {
-	int seconds = timer.getSecondsElapsed();
+	int hundredthsElapsed = timer.getHundredthsElapsed();
+	int seconds = hundredthsElapsed / 100;
 	int minutes = seconds / 60;
-	seconds %= 60;
-	displayLabel.setText(String.format("Time: %d:%02d", minutes, seconds));
-    }
-
-    public JLabel getDisplayLabel() {
-	return displayLabel;
+	seconds = seconds % 60;
+	int hundredths = hundredthsElapsed % 100;
+	setText(String.format("Time: %d:%02d.%02d", minutes, seconds, hundredths));
     }
 }

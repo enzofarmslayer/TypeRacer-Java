@@ -27,4 +27,12 @@ public class PauseButton extends JButton {
 	    setText("Pause");
 	}
     }
+
+    public void enableButton() {
+	setEnabled(true);
+    }
+
+    public void disableButton() {
+	setEnabled(false);
+    }
 }
