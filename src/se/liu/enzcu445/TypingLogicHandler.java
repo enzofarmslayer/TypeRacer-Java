@@ -7,8 +7,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TypingLogicHandler {
+    private static final Logger logger = Logger.getLogger(TypingLogicHandler.class.getName());
+
     private JTextPane textPane;
     private String targetSentence;
     private int typedLength = 0;
@@ -74,6 +78,7 @@ public class TypingLogicHandler {
 
 	    doc.insertString(0, targetSentence, null);
 	} catch (BadLocationException e) {
+	    logger.log(Level.SEVERE, "Failed to display sentence", e);
 	    throw new TypingLogicException("Failed to display sentence", e);
 	}
 	updateCaretPosition();
@@ -96,7 +101,7 @@ public class TypingLogicHandler {
 	try {
 	    displaySentence();
 	} catch (TypingLogicException e) {
-	    // Handle or rethrow the exception as needed
+	    logger.log(Level.SEVERE, "Error setting target sentence", e);
 	    e.printStackTrace();
 	}
     }
@@ -137,10 +142,10 @@ public class TypingLogicHandler {
     }
 
     private void applyStyleToChar(int position, Color color) {
-	    SimpleAttributeSet attrs = new SimpleAttributeSet();
-	    StyleConstants.setForeground(attrs, color);
-	    StyledDocument doc = textPane.getStyledDocument();
-	    doc.setCharacterAttributes(position, 1, attrs, false);
+	SimpleAttributeSet attrs = new SimpleAttributeSet();
+	StyleConstants.setForeground(attrs, color);
+	StyledDocument doc = textPane.getStyledDocument();
+	doc.setCharacterAttributes(position, 1, attrs, false);
     }
 
     private void updateCaretPosition() {

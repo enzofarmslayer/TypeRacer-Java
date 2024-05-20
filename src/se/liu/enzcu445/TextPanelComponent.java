@@ -43,12 +43,8 @@ public class TextPanelComponent extends JPanel {
 	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludeLetters);
 	    typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
 	} catch (SentenceGeneratorException | TypingLogicException e) {
-	    showErrorDialog(e.getMessage());
+	    throw new RuntimeException(e);
 	}
-    }
-
-    private void showErrorDialog(String message) {
-	JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public void setTypingCompletionHandler(TypingEventListener typingEventListener) {
