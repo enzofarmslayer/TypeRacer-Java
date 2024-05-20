@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 public class SpeedtyperViewer extends JFrame {
     private static final Logger logger = LoggingConfig.getLogger();
     private JFrame frame = new JFrame("SpeedTyper");
-    private TextPanelComponent textPanel;
-    private TypingEventHandler typingEventHandler;
+    private TextPanelComponent textPanel = null;
+    private TypingEventHandler typingEventHandler = null;
 
     public SpeedtyperViewer() {
     }

@@ -6,9 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VisualKeyboardComponent extends JPanel {
+    private Map<String, CustomKeyComponent> keyComponents;
 
     public VisualKeyboardComponent() {
 	setLayout(new GridLayout(0, 1)); // Rows, 1 column to stack row panels
+
+	// Initialize the keyComponents map
+	keyComponents = new HashMap<>();
 
 	//keyboard layout
 	String[][] keyRows = {
@@ -23,12 +27,16 @@ public class VisualKeyboardComponent extends JPanel {
 	    JPanel rowPanel = new JPanel();
 	    rowPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 	    for (String keyLabel : row) {
-		CustomKeyComponent keyComponent = new CustomKeyComponent(keyLabel); // Assuming CustomKeyComponent is a component you've defined
-		Map<String, CustomKeyComponent> keyComponents = new HashMap<>();
+		CustomKeyComponent keyComponent = new CustomKeyComponent(keyLabel);
 		keyComponents.put(keyLabel, keyComponent);
 		rowPanel.add(keyComponent);
 	    }
 	    add(rowPanel);
 	}
+    }
+
+    // Method to get a key component by its label
+    public CustomKeyComponent getKeyComponent(String keyLabel) {
+	return keyComponents.get(keyLabel);
     }
 }
