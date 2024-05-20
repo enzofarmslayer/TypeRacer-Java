@@ -2,7 +2,7 @@ package se.liu.enzcu445;
 
 import javax.swing.text.*;
 
-class WrapColumnFactory implements ViewFactory
+public class WrapColumnFactory implements ViewFactory
 {
     @Override
     public View create(Element elem) {

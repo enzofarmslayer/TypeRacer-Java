@@ -35,7 +35,7 @@ public class SentenceGenerator {
 	    words = new Gson().fromJson(reader, listType);
 
 	    reader.close();
-	} catch (IllegalArgumentException | IOException e) {
+	} catch (IOException e) {
 	    logger.severe("Exception occurred while loading JSON data: " + e.getMessage());
 	    e.printStackTrace();
 	    throw new SentenceGeneratorException("Failed to initialize SentenceGenerator", e);

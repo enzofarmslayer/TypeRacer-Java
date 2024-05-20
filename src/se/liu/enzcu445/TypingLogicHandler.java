@@ -67,7 +67,7 @@ public class TypingLogicHandler {
 	freeze = freezeCondition;
     }
 
-    void displaySentence() throws TypingLogicException {
+    public void displaySentence() throws TypingLogicException {
 	try {
 	    StyledDocument doc = textPane.getStyledDocument();
 	    doc.remove(0, doc.getLength());

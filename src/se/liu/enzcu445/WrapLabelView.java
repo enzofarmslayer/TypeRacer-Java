@@ -2,7 +2,7 @@ package se.liu.enzcu445;
 
 import javax.swing.text.*;
 
-class WrapLabelView extends LabelView
+public class WrapLabelView extends LabelView
 {
     public WrapLabelView(Element elem) {
 	super(elem);

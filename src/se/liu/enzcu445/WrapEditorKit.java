@@ -2,7 +2,7 @@ package se.liu.enzcu445;
 
 import javax.swing.text.*;
 
-class WrapEditorKit extends StyledEditorKit {
+public class WrapEditorKit extends StyledEditorKit {
     private ViewFactory defaultFactory = new WrapColumnFactory();
 
     @Override
