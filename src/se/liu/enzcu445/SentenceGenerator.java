@@ -9,8 +9,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class SentenceGenerator {
+    private static final Logger logger = LoggingConfig.getLogger();
     private List<String> words;
     private int wordCount;
     private String excludeLetters;
@@ -21,6 +23,7 @@ public class SentenceGenerator {
 	try {
 	    // Load JSON data from a resource
 	    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
+
 	    if (inputStream == null) {
 		throw new IllegalArgumentException("File not found: " + jsonFilePath);
 	    }
@@ -32,7 +35,9 @@ public class SentenceGenerator {
 
 	    reader.close();
 	} catch (Exception e) {
+	    logger.severe("Exception occurred while loading JSON data: " + e.getMessage());
 	    e.printStackTrace();
+	    throw new RuntimeException("Failed to initialize SentenceGenerator", e);
 	}
     }
 
@@ -54,6 +59,7 @@ public class SentenceGenerator {
 
     public String generateSentence() {
 	if (words == null || words.isEmpty()) {
+	    logger.info("No words available for sentence generation: Word list is empty or not loaded.");
 	    return "No words available for sentence generation.";
 	}
 
@@ -66,6 +72,7 @@ public class SentenceGenerator {
 	}
 
 	if (filteredWords.isEmpty()) {
+	    logger.info("No words available for sentence generation: All words contain excluded letters.");
 	    return "No words available for sentence generation.";
 	}
 

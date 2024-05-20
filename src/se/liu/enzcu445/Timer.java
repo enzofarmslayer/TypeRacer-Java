@@ -1,10 +1,11 @@
 package se.liu.enzcu445;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class Timer {
+    private static final Logger logger = LoggingConfig.getLogger();
     private int hundredthsElapsed = 0;
     private javax.swing.Timer swingTimer;
 
@@ -38,5 +39,6 @@ public class Timer {
     public void reset() {
 	hundredthsElapsed = 0;
 	tick();  // Update immediately on reset
+	logger.info("Timer reset.");
     }
 }

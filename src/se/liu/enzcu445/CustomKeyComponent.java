@@ -2,9 +2,9 @@ package se.liu.enzcu445;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
-class CustomKeyComponent extends JComponent {
+
+public class CustomKeyComponent extends JComponent {
     private Color defaultColor = Color.LIGHT_GRAY;
     private Color highlightColor = Color.YELLOW;
     private Color currentColor = defaultColor;

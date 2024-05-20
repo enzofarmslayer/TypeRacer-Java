@@ -19,7 +19,7 @@ public class SpeedtyperLauncher {
 
 	} catch (IOException e) {
 	    logger.log(Level.SEVERE, "Could not confiugre logging", e);
-	} catch (Exception e) {
+	} catch (RuntimeException e) {
 	    logger.log(Level.SEVERE, "An unexpected error occured", e);
 	}
     }

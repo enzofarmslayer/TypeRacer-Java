@@ -4,11 +4,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.*;
 import java.awt.*;
+import java.util.logging.Logger;
 
 public class TextPanelComponent extends JPanel {
+    private static final Logger logger = LoggingConfig.getLogger();
     private JTextPane sentencePane;
     private SentenceGenerator sentenceGenerator;
-    private TypingLogicHandler typingHandler;  // Make sure this is private to encapsulate it properly
+    private TypingLogicHandler typingHandler;
 
     private int wordCount;
     private String excludeLetters;
@@ -68,6 +70,7 @@ public class TextPanelComponent extends JPanel {
 	typingHandler.updateSettings(newSentence);
 
 	resetDisplaySentence();
+	logger.info("Settings updated: wordCount=" + wordCount + ", excludeLetters=" + excludeLetters);
     }
 
     private String generateSentence() {

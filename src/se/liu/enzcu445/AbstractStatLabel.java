@@ -7,7 +7,7 @@ public abstract class AbstractStatLabel extends JLabel implements LabelUpdater {
     protected TypingLogicHandler typingHandler;
     protected double previousValue = -1.0;
 
-    public AbstractStatLabel(TextPanelComponent textPanelComponent, String initialText) {
+    protected AbstractStatLabel(TextPanelComponent textPanelComponent, String initialText) {
 	super(initialText, SwingConstants.CENTER);
 	this.typingHandler = textPanelComponent.getTypingHandler();
 	setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -30,6 +30,4 @@ public abstract class AbstractStatLabel extends JLabel implements LabelUpdater {
 
 	previousValue = newValue;
     }
-
-    public abstract void update();
 }

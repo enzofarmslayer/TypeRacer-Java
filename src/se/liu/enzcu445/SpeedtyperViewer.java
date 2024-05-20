@@ -2,8 +2,10 @@ package se.liu.enzcu445;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Logger;
 
 public class SpeedtyperViewer extends JFrame {
+    private static final Logger logger = LoggingConfig.getLogger();
     private JFrame frame = new JFrame("SpeedTyper");
     private TextPanelComponent textPanel;
     private TypingEventHandler typingEventHandler;
@@ -75,5 +77,6 @@ public class SpeedtyperViewer extends JFrame {
     public void show() {
         setupFrame();
         frame.setVisible(true);
+        logger.info("Main frame of SpeedTyper shown.");
     }
 }

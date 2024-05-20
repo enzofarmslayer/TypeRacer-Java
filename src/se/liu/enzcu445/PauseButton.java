@@ -1,8 +1,10 @@
 package se.liu.enzcu445;
 
 import javax.swing.*;
+import java.util.logging.Logger;
 
 public class PauseButton extends JButton {
+    private static final Logger logger = LoggingConfig.getLogger();
     private PauseController pauseController;
 
     public PauseButton(PauseController pauseController) {
@@ -31,9 +33,11 @@ public class PauseButton extends JButton {
 
     public void enableButton() {
 	setEnabled(true);
+	logger.info("Pause button enabled.");
     }
 
     public void disableButton() {
 	setEnabled(false);
+	logger.info("Pause button disabled.");
     }
 }

@@ -5,8 +5,10 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class SettingsFrame extends JFrame {
+    private static final Logger logger = LoggingConfig.getLogger();
     private JTextField wordCountField;
     private JTextField excludeLettersField;
     private SettingsListener settingsListener;
@@ -76,8 +78,10 @@ public class SettingsFrame extends JFrame {
 	    // Stäng inställningsramen
 	    dispose();
 	} catch (NumberFormatException e) {
+	    logger.warning("Invalid input for word count: " + e.getMessage());
 	    JOptionPane.showMessageDialog(this, "Please enter a valid number of words between 10 and 200.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
 	} catch (IllegalArgumentException e) {
+	    logger.warning("Invalid input for exclude letters: " + e.getMessage());
 	    JOptionPane.showMessageDialog(this, e.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
 	}
     }

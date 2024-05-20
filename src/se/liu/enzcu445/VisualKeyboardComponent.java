@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VisualKeyboardComponent extends JPanel {
-    private final Map<String, CustomKeyComponent> keyComponents = new HashMap<>();
 
     public VisualKeyboardComponent() {
 	setLayout(new GridLayout(0, 1)); // Rows, 1 column to stack row panels
@@ -25,6 +24,7 @@ public class VisualKeyboardComponent extends JPanel {
 	    rowPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 	    for (String keyLabel : row) {
 		CustomKeyComponent keyComponent = new CustomKeyComponent(keyLabel); // Assuming CustomKeyComponent is a component you've defined
+		Map<String, CustomKeyComponent> keyComponents = new HashMap<>();
 		keyComponents.put(keyLabel, keyComponent);
 		rowPanel.add(keyComponent);
 	    }
