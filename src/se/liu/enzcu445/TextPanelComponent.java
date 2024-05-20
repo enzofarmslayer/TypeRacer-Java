@@ -39,8 +39,16 @@ public class TextPanelComponent extends JPanel {
 	Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 	this.setBorder(blackBorder);
 
-	sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludeLetters);
-	typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
+	try {
+	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludeLetters);
+	    typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
+	} catch (SentenceGeneratorException | TypingLogicException e) {
+	    showErrorDialog(e.getMessage());
+	}
+    }
+
+    private void showErrorDialog(String message) {
+	JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public void setTypingCompletionHandler(TypingEventListener typingEventListener) {
@@ -56,11 +64,15 @@ public class TextPanelComponent extends JPanel {
     }
 
     public void resetDisplaySentence() {
-	typingHandler.setTargetSentence(generateSentence());
-	typingHandler.displaySentence();
+	try {
+	    typingHandler.setTargetSentence(generateSentence());
+	    typingHandler.displaySentence();
+	} catch (TypingLogicException e) {
+	    throw new RuntimeException(e);
+	}
     }
 
-    public void updateSettings(int wordCount, String excludeLetters) {
+	public void updateSettings(int wordCount, String excludeLetters) {
 	this.wordCount = wordCount;
 	this.excludeLetters = excludeLetters;
 	sentenceGenerator.setWordCount(wordCount);

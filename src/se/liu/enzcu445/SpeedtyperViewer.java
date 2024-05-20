@@ -23,7 +23,12 @@ public class SpeedtyperViewer extends JFrame {
         TimerLabel timerLabel = new TimerLabel(timer);
         topPanel.add(timerLabel);
 
-        textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
+        try {
+            textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
+        } catch (Exception e) {
+            showErrorDialog("Failed to initialize TextPanelComponent: " + e.getMessage());
+            return;
+        }
 
         AverageAccuracyStatLabel averageAccuracyLabel = new AverageAccuracyStatLabel(textPanel);
         AverageCpmStatLabel averageCpmLabel = new AverageCpmStatLabel(textPanel, timer);
@@ -72,6 +77,10 @@ public class SpeedtyperViewer extends JFrame {
 
         frame.setSize(835, 650);
         frame.setLocationRelativeTo(null);
+    }
+
+    private void showErrorDialog(String message) {
+        JOptionPane.showMessageDialog(frame, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public void show() {

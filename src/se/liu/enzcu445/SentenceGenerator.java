@@ -3,6 +3,7 @@ package se.liu.enzcu445;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
@@ -17,7 +18,7 @@ public class SentenceGenerator {
     private int wordCount;
     private String excludeLetters;
 
-    public SentenceGenerator(String jsonFilePath, int wordCount, String excludeLetters) {
+    public SentenceGenerator(String jsonFilePath, int wordCount, String excludeLetters) throws SentenceGeneratorException {
 	this.wordCount = wordCount;
 	this.excludeLetters = excludeLetters;
 	try {
@@ -34,10 +35,10 @@ public class SentenceGenerator {
 	    words = new Gson().fromJson(reader, listType);
 
 	    reader.close();
-	} catch (Exception e) {
+	} catch (IllegalArgumentException | IOException e) {
 	    logger.severe("Exception occurred while loading JSON data: " + e.getMessage());
 	    e.printStackTrace();
-	    throw new RuntimeException("Failed to initialize SentenceGenerator", e);
+	    throw new SentenceGeneratorException("Failed to initialize SentenceGenerator", e);
 	}
     }
 

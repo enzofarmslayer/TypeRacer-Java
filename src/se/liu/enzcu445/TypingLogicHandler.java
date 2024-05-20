@@ -25,7 +25,7 @@ public class TypingLogicHandler {
     private double totalCpm = 0.0;
     private int cpmCount = 0;
 
-    public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) {
+    public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) throws TypingLogicException {
 	this.textPane = textPane;
 	this.targetSentence = sentence;
 	this.typingEventListener = typingEventListener;
@@ -63,7 +63,7 @@ public class TypingLogicHandler {
 	freeze = freezeCondition;
     }
 
-    void displaySentence() {
+    void displaySentence() throws TypingLogicException {
 	try {
 	    StyledDocument doc = textPane.getStyledDocument();
 	    doc.remove(0, doc.getLength());
@@ -74,7 +74,7 @@ public class TypingLogicHandler {
 
 	    doc.insertString(0, targetSentence, null);
 	} catch (BadLocationException e) {
-	    e.printStackTrace();
+	    throw new TypingLogicException("Failed to display sentence", e);
 	}
 	updateCaretPosition();
     }
@@ -93,7 +93,12 @@ public class TypingLogicHandler {
 	if (this.targetSentence.equals("No words available for sentence generation.")) {
 	    this.freeze = true; // Freeze the typing logic
 	}
-	displaySentence();
+	try {
+	    displaySentence();
+	} catch (TypingLogicException e) {
+	    // Handle or rethrow the exception as needed
+	    e.printStackTrace();
+	}
     }
 
     public void updateSettings(String newTargetSentence) {
@@ -132,14 +137,10 @@ public class TypingLogicHandler {
     }
 
     private void applyStyleToChar(int position, Color color) {
-	try {
 	    SimpleAttributeSet attrs = new SimpleAttributeSet();
 	    StyleConstants.setForeground(attrs, color);
 	    StyledDocument doc = textPane.getStyledDocument();
 	    doc.setCharacterAttributes(position, 1, attrs, false);
-	} catch (Exception ex) {
-	    ex.printStackTrace();
-	}
     }
 
     private void updateCaretPosition() {
