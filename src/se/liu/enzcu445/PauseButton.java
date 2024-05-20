@@ -11,6 +11,7 @@ public class PauseButton extends JButton {
 
 	setFocusable(false);
 	this.addActionListener(e -> togglePause());
+	disableButton();
     }
 
     private void togglePause() {

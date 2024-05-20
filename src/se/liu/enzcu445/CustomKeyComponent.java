@@ -64,7 +64,7 @@ class CustomKeyComponent extends JComponent {
 		return label.toUpperCase();
 	    case "Shift":
 		// Example of using a direct keycode, replace 192 with the actual keycode if different
-		return KeyEvent.getKeyText(16); // You need to know the correct key code
+		//return KeyEvent.getKeyText(16); // You need to know the correct key code
 	    // Add specific cases for other special keys and international characters as needed
 	    default:
 		return label.toUpperCase();

@@ -4,13 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SpeedtyperViewer extends JFrame {
-    JFrame frame = new JFrame("SpeedTyper");
+    private JFrame frame = new JFrame("SpeedTyper");
+    private TextPanelComponent textPanel;
+    private TypingEventHandler typingEventHandler;
 
     public SpeedtyperViewer() {
     }
 
     private void setupFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
 
         JPanel topPanel = new JPanel(new FlowLayout());
 
@@ -18,19 +21,19 @@ public class SpeedtyperViewer extends JFrame {
         TimerLabel timerLabel = new TimerLabel(timer);
         topPanel.add(timerLabel);
 
-        TextPanelComponent textPanel = new TextPanelComponent(null); // Initially pass null
+        textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
 
-        AverageAccuracyLabel averageAccuracyLabel = new AverageAccuracyLabel(textPanel);
-        AverageCpmLabel averageCpmLabel = new AverageCpmLabel(textPanel,timer);
+        AverageAccuracyStatLabel averageAccuracyLabel = new AverageAccuracyStatLabel(textPanel);
+        AverageCpmStatLabel averageCpmLabel = new AverageCpmStatLabel(textPanel, timer);
 
-        SessionAccuracyLabel sessionAccuracyLabel = new SessionAccuracyLabel(textPanel);
-        SessionCpmLabel sessionCpmLabel = new SessionCpmLabel(textPanel, timer);
+        SessionAccuracyStatLabel sessionAccuracyLabel = new SessionAccuracyStatLabel(textPanel);
+        SessionCpmStatLabel sessionCpmLabel = new SessionCpmStatLabel(textPanel, timer);
 
         PauseController pauseController = new PauseController(timer, textPanel);
         PauseButton pauseButton = new PauseButton(pauseController);
 
-        TypingEventHandler typingEventHandler = new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel,
-                                                                       pauseButton, sessionAccuracyLabel, sessionCpmLabel, textPanel);
+        typingEventHandler = new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel,
+                                                    pauseButton, sessionAccuracyLabel, sessionCpmLabel, textPanel);
 
         textPanel.setTypingCompletionHandler(typingEventHandler); // Set the handler after creation
         textPanel.getTypingHandler().setTypingEventListener(typingEventHandler); // Set typing event listener
@@ -39,6 +42,9 @@ public class SpeedtyperViewer extends JFrame {
         topPanel.add(averageCpmLabel);
         topPanel.add(averageAccuracyLabel);
 
+        // Lägg till inställningsknappen som en egen klass
+        SettingsButton settingsButton = new SettingsButton(typingEventHandler, textPanel.getSentenceGenerator().getWordCount(), textPanel.getSentenceGenerator().getExcludeLetters());
+        topPanel.add(settingsButton);
 
         topPanel.setPreferredSize(new Dimension(frame.getWidth(), 100));
         frame.add(topPanel, BorderLayout.NORTH);
@@ -70,5 +76,4 @@ public class SpeedtyperViewer extends JFrame {
         setupFrame();
         frame.setVisible(true);
     }
-
 }

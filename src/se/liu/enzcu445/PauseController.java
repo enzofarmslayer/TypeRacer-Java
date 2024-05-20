@@ -13,6 +13,7 @@ public class PauseController {
     public void togglePause() {
 	isPaused = !isPaused;
 	if (isPaused) {
+
 	    timer.stop();
 	    textPanelComponent.getTypingHandler().setFreeze(true); // Pause typing
 	} else {

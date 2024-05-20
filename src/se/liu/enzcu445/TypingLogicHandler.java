@@ -33,6 +33,13 @@ public class TypingLogicHandler {
 	this.sumAccuracy = 0.0;
 	this.accuracyCount = 0;
 
+	// Set the editor kit to enable wrapping
+	textPane.setEditorKit(new WrapEditorKit());
+
+	if (this.targetSentence.equals("No words available for sentence generation.")) {
+	    this.freeze = true; // Freeze the typing logic
+	}
+
 	displaySentence();
 
 	textPane.addKeyListener(new KeyAdapter() {
@@ -60,6 +67,11 @@ public class TypingLogicHandler {
 	try {
 	    StyledDocument doc = textPane.getStyledDocument();
 	    doc.remove(0, doc.getLength());
+
+	    SimpleAttributeSet center = new SimpleAttributeSet();
+	    StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+	    doc.setParagraphAttributes(0, doc.getLength(), center, false);
+
 	    doc.insertString(0, targetSentence, null);
 	} catch (BadLocationException e) {
 	    e.printStackTrace();
@@ -78,7 +90,15 @@ public class TypingLogicHandler {
 
     public void setTargetSentence(String sentence) {
 	this.targetSentence = sentence;
+	if (this.targetSentence.equals("No words available for sentence generation.")) {
+	    this.freeze = true; // Freeze the typing logic
+	}
 	displaySentence();
+    }
+
+    public void updateSettings(String newTargetSentence) {
+	resetVariables();
+	setTargetSentence(newTargetSentence);
     }
 
     private void handleKeyPress(KeyEvent e) {

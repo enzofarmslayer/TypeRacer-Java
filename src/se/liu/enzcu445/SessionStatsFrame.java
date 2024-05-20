@@ -6,7 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class SessionStatsFrame extends JFrame {
-    public SessionStatsFrame(SessionAccuracyLabel sessionAccuracyLabel, SessionCpmLabel sessionCpmLabel, FrameCloseListener listener) {
+    public SessionStatsFrame(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
 	setTitle("Session Stats");
 	setSize(300, 200);
 	setLocationRelativeTo(null);
