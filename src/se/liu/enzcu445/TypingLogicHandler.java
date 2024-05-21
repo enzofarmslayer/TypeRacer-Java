@@ -10,6 +10,20 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * TypingLogicHandler manages the logic for typing a given sentence within a JTextPane.
+ * It tracks typing progress, accuracy, and typing speed, and updates the display accordingly.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Displays the target sentence in the JTextPane.</li>
+ *   <li>Tracks user input and compares it against the target sentence.</li>
+ *   <li>Handles errors and updates the display to reflect correct and incorrect inputs.</li>
+ *   <li>Notifies listeners of typing events such as start, completion, and accuracy updates.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class TypingLogicHandler {
     private static final Logger logger = Logger.getLogger(TypingLogicHandler.class.getName());
 

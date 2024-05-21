@@ -1,7 +1,13 @@
 package se.liu.enzcu445;
 
 import javax.swing.text.*;
-
+/**
+ * WrapLabelView is a custom implementation of the LabelView that supports wrapping.
+ *
+ * <p>This view is used to ensure that text labels can be wrapped within their container.</p>
+ *
+ * @since 1.0
+ */
 public class WrapLabelView extends LabelView
 {
     public WrapLabelView(Element elem) {

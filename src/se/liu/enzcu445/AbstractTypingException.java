@@ -8,7 +8,11 @@ package se.liu.enzcu445;
  */
 public abstract class AbstractTypingException extends Exception {
 
-    public AbstractTypingException(String message, Throwable cause) {
+    protected AbstractTypingException(String message, Throwable cause) {
 	super(message, cause);
+    }
+
+    protected AbstractTypingException(String message) {
+	super(message);
     }
 }

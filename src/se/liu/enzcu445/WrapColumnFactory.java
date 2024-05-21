@@ -2,6 +2,13 @@ package se.liu.enzcu445;
 
 import javax.swing.text.*;
 
+/**
+ * WrapColumnFactory is a custom implementation of the ViewFactory that creates different types of views based on the element type.
+ *
+ * <p>This factory is used to enable wrapping for text elements in JTextPane components.</p>
+ *
+ * @since 1.0
+ */
 public class WrapColumnFactory implements ViewFactory
 {
     @Override

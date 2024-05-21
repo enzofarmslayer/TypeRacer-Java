@@ -1,6 +1,5 @@
 package se.liu.enzcu445;
 
-
 /**
  * TypingLogicException is a custom exception that represents errors specific to the typing logic in the application.
  * It extends {@link AbstractTypingException}.
