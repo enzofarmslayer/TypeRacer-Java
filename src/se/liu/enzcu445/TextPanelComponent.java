@@ -77,7 +77,7 @@ public class TextPanelComponent extends JPanel {
 	    typingHandler.displaySentence();
     }
 
-	public void updateSettings(int wordCount, String excludeLetters) {
+    public void updateSettings(int wordCount, String excludeLetters) {
 	this.wordCount = wordCount;
 	this.excludeLetters = excludeLetters;
 	sentenceGenerator.setWordCount(wordCount);

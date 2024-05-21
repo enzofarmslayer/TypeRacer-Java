@@ -21,8 +21,6 @@ import java.util.logging.Logger;
 public class SpeedtyperViewer extends JFrame {
     private static final Logger logger = LoggingConfig.getLogger();
     private JFrame frame = new JFrame("SpeedTyper");
-    private TextPanelComponent textPanel = null;
-    private TypingEventHandler typingEventHandler = null;
 
     public SpeedtyperViewer() {
     }
@@ -37,8 +35,9 @@ public class SpeedtyperViewer extends JFrame {
         TimerLabel timerLabel = new TimerLabel(timer);
         topPanel.add(timerLabel);
 
-        try {
-            textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
+	TextPanelComponent textPanel = null;
+	try {
+	    textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
         } catch (TextPanelException e) {
             showErrorDialog("Failed to initialize TextPanelComponent: " + e.getMessage());
             return;
@@ -53,8 +52,9 @@ public class SpeedtyperViewer extends JFrame {
         PauseController pauseController = new PauseController(timer, textPanel);
         PauseButton pauseButton = new PauseButton(pauseController);
 
-        typingEventHandler = new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel,
-                                                    pauseButton, sessionAccuracyLabel, sessionCpmLabel, textPanel);
+	TypingEventHandler typingEventHandler =
+		new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel, pauseButton, sessionAccuracyLabel, sessionCpmLabel,
+				       textPanel);
 
         textPanel.setTypingCompletionHandler(typingEventHandler); // Set the handler after creation
         textPanel.getTypingHandler().setTypingEventListener(typingEventHandler); // Set typing event listener

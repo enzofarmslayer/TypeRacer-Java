@@ -10,21 +10,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * TypingLogicHandler manages the logic for handling typing events and calculating statistics.
- * It interacts with a JTextPane to display the target sentence and process user input.
- *
- * <p>Responsibilities:</p>
- * <ul>
- *   <li>Displays the target sentence in the JTextPane.</li>
- *   <li>Handles key presses to compare user input with the target sentence.</li>
- *   <li>Calculates and tracks typing accuracy and characters per minute (CPM).</li>
- *   <li>Notifies listeners of typing events such as start and completion.</li>
- *   <li>Provides methods to update and reset typing settings and variables.</li>
- * </ul>
- *
- * @since 1.0
- */
 public class TypingLogicHandler {
     private static final Logger logger = Logger.getLogger(TypingLogicHandler.class.getName());
 
@@ -63,9 +48,9 @@ public class TypingLogicHandler {
 
 	textPane.addKeyListener(new KeyAdapter() {
 	    @Override
-	    public void keyPressed(KeyEvent e) {
+	    public void keyTyped(KeyEvent e) {
 		if (!freeze) { // Check if typing is paused through PauseController
-		    handleKeyPress(e);
+		    handleKeyTyped(e);
 		}
 	    }
 	});
@@ -121,7 +106,7 @@ public class TypingLogicHandler {
 	setTargetSentence(newTargetSentence);
     }
 
-    private void handleKeyPress(KeyEvent e) {
+    private void handleKeyTyped(KeyEvent e) {
 	if (!typingStarted) {
 	    typingStarted = true;
 	    if (typingEventListener != null) {
@@ -132,8 +117,7 @@ public class TypingLogicHandler {
 	char keyChar = e.getKeyChar();
 	if (typedLength < targetSentence.length()) {
 	    char targetChar = targetSentence.charAt(typedLength);
-	    // Map spacebar press to "•"
-	    if ((keyChar == ' ' && targetChar == '•') || keyChar == targetChar) {
+	    if ((keyChar == ' ' && targetChar == '•') ||keyChar == targetChar) {
 		applyStyleToChar(typedLength, Color.GRAY);
 		typedLength++;
 		updateCaretPosition();

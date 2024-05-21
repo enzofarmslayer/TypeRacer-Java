@@ -35,8 +35,6 @@ public class SpeedtyperLauncher {
 	    logger.info("Program has started");
 	} catch (IOException e) {
 	    logger.log(Level.SEVERE, "Could not configure logging", e);
-	} catch (RuntimeException e) {
-	    logger.log(Level.SEVERE, "An unexpected error occurred", e);
 	}
     }
 }

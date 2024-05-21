@@ -75,27 +75,37 @@ public class SettingsFrame extends JFrame {
 
     private void saveSettings() {
 	try {
-	    int wordCount = Integer.parseInt(wordCountField.getText());
-	    if (wordCount < 10 || wordCount > 200) {
-		throw new NumberFormatException("Word count must be between 10 and 200.");
-	    }
-
-	    String excludeLetters = excludeLettersField.getText();
-	    if (!excludeLetters.matches("[a-zA-Z]*")) {
-		throw new IllegalArgumentException("Exclude letters field can only contain English letters.");
-	    }
+	    int wordCount = validateWordCount(wordCountField.getText());
+	    String excludeLetters = validateExcludeLetters(excludeLettersField.getText());
 
 	    // Meddela lyssnaren om de nya inställningarna
 	    settingsListener.onSettingsChanged(wordCount, excludeLetters);
 
 	    // Stäng inställningsramen
 	    dispose();
-	} catch (NumberFormatException e) {
-	    logger.warning("Invalid input for word count: " + e.getMessage());
-	    JOptionPane.showMessageDialog(this, "Please enter a valid number of words between 10 and 200.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-	} catch (IllegalArgumentException e) {
-	    logger.warning("Invalid input for exclude letters: " + e.getMessage());
+	} catch (InvalidSettingsException e) {
+	    logger.warning("Invalid settings: " + e.getMessage());
 	    JOptionPane.showMessageDialog(this, e.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+
+    private int validateWordCount(String text) throws InvalidSettingsException {
+	try {
+	    int wordCount = Integer.parseInt(text);
+	    if (wordCount < 10 || wordCount > 200) {
+		throw new InvalidSettingsException("Word count must be between 10 and 200.");
+	    }
+	    return wordCount;
+	} catch (NumberFormatException e) {
+	    throw new InvalidSettingsException("Please enter a valid number of words between 10 and 200.");
+	}
+    }
+
+    private String validateExcludeLetters(String text) throws InvalidSettingsException {
+	if (text.matches("[a-zA-Z]*")) {
+	    return text;
+	} else {
+	    throw new InvalidSettingsException("Exclude letters field can only contain English letters.");
 	}
     }
 }
