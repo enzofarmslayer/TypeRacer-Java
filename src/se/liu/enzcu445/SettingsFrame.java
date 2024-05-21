@@ -7,6 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+/**
+ * SettingsFrame is a JFrame that allows users to adjust settings such as the word count and excluded letters.
+ * It interacts with a {@link SettingsListener} to notify about changes in settings.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Displays fields for word count and excluded letters.</li>
+ *   <li>Restricts input to valid values using a DocumentFilter.</li>
+ *   <li>Saves settings and notifies the listener when the save button is clicked.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class SettingsFrame extends JFrame {
     private static final Logger logger = LoggingConfig.getLogger();
     private JTextField wordCountField;

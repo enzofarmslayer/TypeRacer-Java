@@ -3,6 +3,18 @@ package se.liu.enzcu445;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * TimerLabel is a custom JLabel that displays the elapsed time tracked by a {@link Timer}.
+ * It updates the label text to show the current elapsed time in minutes, seconds, and hundredths of a second.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Initializes and configures the label with default text and styling.</li>
+ *   <li>Updates the displayed time at regular intervals.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class TimerLabel extends JLabel {
     private Timer timer;
 

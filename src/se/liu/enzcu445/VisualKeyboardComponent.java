@@ -5,6 +5,18 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * VisualKeyboardComponent represents a visual keyboard composed of {@link CustomKeyComponent}s.
+ * It organizes keys in a grid layout and provides methods to interact with individual keys.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Initializes and arranges key components in a visual layout.</li>
+ *   <li>Provides access to individual key components by their labels.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class VisualKeyboardComponent extends JPanel {
     private Map<String, CustomKeyComponent> keyComponents;
 

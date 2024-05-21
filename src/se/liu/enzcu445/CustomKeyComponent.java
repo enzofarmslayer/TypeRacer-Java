@@ -3,7 +3,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-
+/**
+ * CustomKeyComponent represents a visual component for a keyboard key.
+ * It highlights the key when pressed and returns to the default color when released.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Sets size and label of the key based on its type.</li>
+ *   <li>Handles key press and release events to change the key's color.</li>
+ *   <li>Renders the key with the appropriate color and label.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class CustomKeyComponent extends JComponent {
     private Color defaultColor = Color.LIGHT_GRAY;
     private Color highlightColor = Color.YELLOW;

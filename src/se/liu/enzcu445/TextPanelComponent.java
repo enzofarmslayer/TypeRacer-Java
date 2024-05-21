@@ -6,6 +6,19 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.util.logging.Logger;
 
+/**
+ * TextPanelComponent is a custom JPanel that displays and manages the text panel component for the SpeedTyper application.
+ * It handles the generation of sentences and the logic for typing events.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Initializes and configures the text panel with a sentence generator and typing handler.</li>
+ *   <li>Generates sentences based on the provided settings and updates the display.</li>
+ *   <li>Handles typing completion events and updates the typing handler settings.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class TextPanelComponent extends JPanel {
     private static final Logger logger = LoggingConfig.getLogger();
     private JTextPane sentencePane;
@@ -15,7 +28,7 @@ public class TextPanelComponent extends JPanel {
     private int wordCount;
     private String excludeLetters;
 
-    public TextPanelComponent(TypingEventListener typingEventListener, int wordCount, String excludeLetters) {
+    public TextPanelComponent(TypingEventListener typingEventListener, int wordCount, String excludeLetters) throws TextPanelException {
 	this.wordCount = wordCount;
 	this.excludeLetters = excludeLetters;
 
@@ -43,7 +56,7 @@ public class TextPanelComponent extends JPanel {
 	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludeLetters);
 	    typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
 	} catch (SentenceGeneratorException | TypingLogicException e) {
-	    throw new RuntimeException(e);
+	    throw new TextPanelException("Failed to create inner components",e);
 	}
     }
 
@@ -60,12 +73,8 @@ public class TextPanelComponent extends JPanel {
     }
 
     public void resetDisplaySentence() {
-	try {
 	    typingHandler.setTargetSentence(generateSentence());
 	    typingHandler.displaySentence();
-	} catch (TypingLogicException e) {
-	    throw new RuntimeException(e);
-	}
     }
 
 	public void updateSettings(int wordCount, String excludeLetters) {

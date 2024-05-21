@@ -10,6 +10,21 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * TypingLogicHandler manages the logic for handling typing events and calculating statistics.
+ * It interacts with a JTextPane to display the target sentence and process user input.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Displays the target sentence in the JTextPane.</li>
+ *   <li>Handles key presses to compare user input with the target sentence.</li>
+ *   <li>Calculates and tracks typing accuracy and characters per minute (CPM).</li>
+ *   <li>Notifies listeners of typing events such as start and completion.</li>
+ *   <li>Provides methods to update and reset typing settings and variables.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class TypingLogicHandler {
     private static final Logger logger = Logger.getLogger(TypingLogicHandler.class.getName());
 
@@ -67,7 +82,7 @@ public class TypingLogicHandler {
 	freeze = freezeCondition;
     }
 
-    public void displaySentence() throws TypingLogicException {
+    public void displaySentence() {
 	try {
 	    StyledDocument doc = textPane.getStyledDocument();
 	    doc.remove(0, doc.getLength());
@@ -79,7 +94,7 @@ public class TypingLogicHandler {
 	    doc.insertString(0, targetSentence, null);
 	} catch (BadLocationException e) {
 	    logger.log(Level.SEVERE, "Failed to display sentence", e);
-	    throw new TypingLogicException("Failed to display sentence", e);
+	    System.exit(1);
 	}
 	updateCaretPosition();
     }
@@ -98,12 +113,7 @@ public class TypingLogicHandler {
 	if (this.targetSentence.equals("No words available for sentence generation.")) {
 	    this.freeze = true; // Freeze the typing logic
 	}
-	try {
-	    displaySentence();
-	} catch (TypingLogicException e) {
-	    logger.log(Level.SEVERE, "Error setting target sentence", e);
-	    e.printStackTrace();
-	}
+	displaySentence();
     }
 
     public void updateSettings(String newTargetSentence) {

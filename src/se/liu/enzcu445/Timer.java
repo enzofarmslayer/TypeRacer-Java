@@ -4,6 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+/**
+ * Timer is a custom timer class that tracks elapsed time in hundredths of a second.
+ * It uses a Swing Timer to increment the elapsed time and can start, stop, and reset the timer.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Tracks elapsed time in hundredths of a second.</li>
+ *   <li>Starts, stops, and resets the timer.</li>
+ *   <li>Provides the elapsed time to other components.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class Timer {
     private static final Logger logger = LoggingConfig.getLogger();
     private int hundredthsElapsed = 0;

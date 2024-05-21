@@ -1,8 +1,21 @@
 package se.liu.enzcu445;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * TypingEventHandler handles typing events and updates various components in the application.
+ * It implements {@link TypingEventListener}, {@link FrameCloseListener}, and {@link SettingsListener}.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Starts and stops a timer when typing starts and completes.</li>
+ *   <li>Updates statistical labels upon typing completion.</li>
+ *   <li>Manages the session stats frame.</li>
+ *   <li>Resets variables and updates settings when the frame is closed or settings are changed.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class TypingEventHandler implements TypingEventListener, FrameCloseListener, SettingsListener {
     private static final Logger logger = Logger.getLogger(TypingEventHandler.class.getName());
     private Timer timer;

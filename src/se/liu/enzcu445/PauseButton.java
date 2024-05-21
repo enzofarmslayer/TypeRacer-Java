@@ -3,6 +3,19 @@ package se.liu.enzcu445;
 import javax.swing.*;
 import java.util.logging.Logger;
 
+/**
+ * PauseButton is a custom JButton that controls the pause and resume functionality of the application.
+ * It interacts with a {@link PauseController} to toggle the pause state and updates its label accordingly.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Initializes the button with a pause label and sets up action listeners.</li>
+ *   <li>Toggles the pause state and updates the button label when clicked.</li>
+ *   <li>Enables and disables the button with corresponding log messages.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class PauseButton extends JButton {
     private static final Logger logger = LoggingConfig.getLogger();
     private PauseController pauseController;

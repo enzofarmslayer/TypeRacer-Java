@@ -5,6 +5,12 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * SessionStatsFrame is a JFrame that displays session statistics including accuracy and CPM.
+ * It manages a window that shows the provided {@link AbstractStatLabel} components for session accuracy and CPM.
+ *
+ * @since 1.0
+ */
 public class SessionStatsFrame extends JFrame {
     public SessionStatsFrame(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
 	setTitle("Session Stats");

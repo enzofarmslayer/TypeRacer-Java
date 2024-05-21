@@ -1,5 +1,10 @@
 package se.liu.enzcu445;
-
+/**
+ * SessionAccuracyStatLabel is a concrete implementation of {@link AbstractStatLabel} that displays the session accuracy.
+ * It updates the label with the current session's accuracy value based on data from {@link TypingLogicHandler}.
+ *
+ * @since 1.0
+ */
 public class SessionAccuracyStatLabel extends AbstractStatLabel
 {
 

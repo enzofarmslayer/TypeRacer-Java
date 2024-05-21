@@ -3,7 +3,24 @@ package se.liu.enzcu445;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * The SpeedtyperLauncher class is the entry point for the Speedtyper application.
+ * It initializes logging and starts the main user interface.
+ *
+ * <p>Tasks:</p>
+ * <ul>
+ *   <li>Sets up logging with {@link LoggingConfig}.</li>
+ *   <li>Displays the user interface via {@link SpeedtyperViewer}.</li>
+ * </ul>
+ *
+ * <p>Relationships:</p>
+ * <ul>
+ *   <li>{@link LoggingConfig}: Configures logging settings.</li>
+ *   <li>{@link SpeedtyperViewer}: Manages the main UI.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class SpeedtyperLauncher {
     private static final Logger logger = Logger.getLogger(SpeedtyperLauncher.class.getName());
 
@@ -15,12 +32,11 @@ public class SpeedtyperLauncher {
 	    SpeedtyperViewer viewer = new SpeedtyperViewer();
 	    viewer.show();
 
-	    logger.info("Program have started");
-
+	    logger.info("Program has started");
 	} catch (IOException e) {
-	    logger.log(Level.SEVERE, "Could not confiugre logging", e);
+	    logger.log(Level.SEVERE, "Could not configure logging", e);
 	} catch (RuntimeException e) {
-	    logger.log(Level.SEVERE, "An unexpected error occured", e);
+	    logger.log(Level.SEVERE, "An unexpected error occurred", e);
 	}
     }
 }

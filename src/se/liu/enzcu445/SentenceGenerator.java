@@ -3,6 +3,7 @@ package se.liu.enzcu445;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,6 +13,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
+/**
+ * SentenceGenerator is responsible for generating sentences based on a list of words loaded from a JSON file.
+ * It can exclude words containing specified letters and generate sentences with a specified number of words.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Loads a list of words from a JSON file.</li>
+ *   <li>Generates sentences with a specified number of words, excluding those with certain letters.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class SentenceGenerator {
     private static final Logger logger = LoggingConfig.getLogger();
     private List<String> words;
@@ -26,7 +39,7 @@ public class SentenceGenerator {
 	    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
 
 	    if (inputStream == null) {
-		throw new IllegalArgumentException("File not found: " + jsonFilePath);
+		throw new FileNotFoundException("File not found: " + jsonFilePath);
 	    }
 
 	    // Use Gson to parse the JSON into a List of Strings
@@ -36,8 +49,8 @@ public class SentenceGenerator {
 
 	    reader.close();
 	} catch (IOException e) {
-	    logger.severe("Exception occurred while loading JSON data: " + e.getMessage());
 	    e.printStackTrace();
+	    logger.severe("Exception occurred while loading JSON data: " + e.getMessage());
 	    throw new SentenceGeneratorException("Failed to initialize SentenceGenerator", e);
 	}
     }

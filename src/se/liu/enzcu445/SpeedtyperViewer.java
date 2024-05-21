@@ -4,6 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Logger;
 
+/**
+ * SpeedtyperViewer is the main frame for the SpeedTyper application.
+ * It sets up the main user interface components and manages the application's main window.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Initializes and configures the main frame and its components.</li>
+ *   <li>Sets up and adds the top panel, which includes the timer label, pause button, average accuracy label, and average CPM label.</li>
+ *   <li>Manages the text panel and visual keyboard components.</li>
+ *   <li>Handles displaying error dialogs for initialization failures.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class SpeedtyperViewer extends JFrame {
     private static final Logger logger = LoggingConfig.getLogger();
     private JFrame frame = new JFrame("SpeedTyper");
@@ -25,7 +39,7 @@ public class SpeedtyperViewer extends JFrame {
 
         try {
             textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
-        } catch (RuntimeException e) {
+        } catch (TextPanelException e) {
             showErrorDialog("Failed to initialize TextPanelComponent: " + e.getMessage());
             return;
         }

@@ -1,5 +1,12 @@
 package se.liu.enzcu445;
 
+/**
+ * SessionCpmStatLabel is a concrete implementation of {@link AbstractStatLabel} that displays the session characters per minute (CPM).
+ * It updates the label with the current session's CPM value based on data from {@link TypingLogicHandler} and a {@link Timer}.
+ *
+ * @since 1.0
+ */
+
 public class SessionCpmStatLabel extends AbstractStatLabel
 {
     private Timer timer;

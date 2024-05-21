@@ -1,5 +1,10 @@
 package se.liu.enzcu445;
-
+/**
+ * AverageAccuracyStatLabel is a concrete implementation of {@link AbstractStatLabel} that displays the average accuracy of typing.
+ * It updates the label with the average accuracy value based on data from {@link TypingLogicHandler}.
+ *
+ * @since 1.0
+ */
 public class AverageAccuracyStatLabel extends AbstractStatLabel
 {
 

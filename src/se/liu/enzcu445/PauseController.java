@@ -2,6 +2,18 @@ package se.liu.enzcu445;
 
 import java.util.logging.Logger;
 
+/**
+ * PauseController manages the pause and resume functionality for the application.
+ * It interacts with a {@link Timer} and a {@link TextPanelComponent} to control the state of the typing session.
+ *
+ * <p>Responsibilities:</p>
+ * <ul>
+ *   <li>Toggles the pause state and updates the timer and typing handler accordingly.</li>
+ *   <li>Logs pause and resume actions.</li>
+ * </ul>
+ *
+ * @since 1.0
+ */
 public class PauseController {
     private static final Logger logger = LoggingConfig.getLogger();
     private boolean isPaused = false;
