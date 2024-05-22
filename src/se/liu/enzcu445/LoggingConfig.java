@@ -19,7 +19,7 @@ import java.util.logging.SimpleFormatter;
  * @since 1.0
  */
 public class LoggingConfig {
-    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void setup() throws IOException {
 	Logger rootLogger = Logger.getLogger("");
@@ -30,6 +30,6 @@ public class LoggingConfig {
     }
 
     public static Logger getLogger() {
-	return logger;
+	return LOGGER;
     }
 }

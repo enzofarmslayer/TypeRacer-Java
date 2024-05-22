@@ -20,8 +20,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class TextPanelComponent extends JPanel {
-    private static final Logger logger = LoggingConfig.getLogger();
-    private JTextPane sentencePane;
+    private static final Logger LOGGER = LoggingConfig.getLogger();
     private SentenceGenerator sentenceGenerator;
     private TypingLogicHandler typingHandler;
 
@@ -32,7 +31,7 @@ public class TextPanelComponent extends JPanel {
 	this.wordCount = wordCount;
 	this.excludeLetters = excludeLetters;
 
-	sentencePane = new JTextPane();
+	JTextPane sentencePane = new JTextPane();
 	sentencePane.setFont(new Font("SansSerif", Font.BOLD, 16));
 	sentencePane.setEditable(false);
 	sentencePane.setPreferredSize(new Dimension(800, 200));  // Adjust size as needed
@@ -87,7 +86,7 @@ public class TextPanelComponent extends JPanel {
 	typingHandler.updateSettings(newSentence);
 
 	resetDisplaySentence();
-	logger.info("Settings updated: wordCount=" + wordCount + ", excludeLetters=" + excludeLetters);
+	LOGGER.info("Settings updated: wordCount=" + wordCount + ", excludeLetters=" + excludeLetters);
     }
 
     private String generateSentence() {

@@ -36,7 +36,7 @@ public class TimerLabel extends JLabel {
 	int hundredthsElapsed = timer.getHundredthsElapsed();
 	int seconds = hundredthsElapsed / 100;
 	int minutes = seconds / 60;
-	seconds = seconds % 60;
+	seconds %= 60;
 	int hundredths = hundredthsElapsed % 100;
 	setText(String.format("Time: %d:%02d.%02d", minutes, seconds, hundredths));
     }

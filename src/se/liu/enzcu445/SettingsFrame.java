@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class SettingsFrame extends JFrame {
-    private static final Logger logger = LoggingConfig.getLogger();
+    private static final Logger LOGGER = LoggingConfig.getLogger();
     private JTextField wordCountField;
     private JTextField excludeLettersField;
     private SettingsListener settingsListener;
@@ -84,7 +84,7 @@ public class SettingsFrame extends JFrame {
 	    // Stäng inställningsramen
 	    dispose();
 	} catch (InvalidSettingsException e) {
-	    logger.warning("Invalid settings: " + e.getMessage());
+	    LOGGER.warning("Invalid settings: " + e.getMessage());
 	    JOptionPane.showMessageDialog(this, e.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
 	}
     }

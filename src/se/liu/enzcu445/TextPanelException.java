@@ -7,7 +7,6 @@ package se.liu.enzcu445;
  */
 public class TextPanelException extends AbstractTypingException
 {
-
     public TextPanelException(final String message, final Throwable cause) {
 	super(message, cause);
     }

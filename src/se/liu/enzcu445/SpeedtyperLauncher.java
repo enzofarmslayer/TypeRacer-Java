@@ -22,19 +22,19 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class SpeedtyperLauncher {
-    private static final Logger logger = Logger.getLogger(SpeedtyperLauncher.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SpeedtyperLauncher.class.getName());
 
     public static void main(String[] args) {
 	try {
 	    LoggingConfig.setup();
-	    logger.info("Program starts...");
+	    LOGGER.info("Program starts...");
 
 	    SpeedtyperViewer viewer = new SpeedtyperViewer();
 	    viewer.show();
 
-	    logger.info("Program has started");
+	    LOGGER.info("Program has started");
 	} catch (IOException e) {
-	    logger.log(Level.SEVERE, "Could not configure logging", e);
+	    LOGGER.log(Level.SEVERE, "Could not configure logging", e);
 	}
     }
 }

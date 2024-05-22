@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class SpeedtyperViewer extends JFrame {
-    private static final Logger logger = LoggingConfig.getLogger();
+    private static final Logger LOGGER = LoggingConfig.getLogger();
     private JFrame frame = new JFrame("SpeedTyper");
 
     public SpeedtyperViewer() {
@@ -100,6 +100,6 @@ public class SpeedtyperViewer extends JFrame {
     public void show() {
         setupFrame();
         frame.setVisible(true);
-        logger.info("Main frame of SpeedTyper shown.");
+        LOGGER.info("Main frame of SpeedTyper shown.");
     }
 }

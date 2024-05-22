@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class PauseButton extends JButton {
-    private static final Logger logger = LoggingConfig.getLogger();
+    private static final Logger LOGGER = LoggingConfig.getLogger();
     private PauseController pauseController;
 
     public PauseButton(PauseController pauseController) {
@@ -46,11 +46,11 @@ public class PauseButton extends JButton {
 
     public void enableButton() {
 	setEnabled(true);
-	logger.info("Pause button enabled.");
+	LOGGER.info("Pause button enabled.");
     }
 
     public void disableButton() {
 	setEnabled(false);
-	logger.info("Pause button disabled.");
+	LOGGER.info("Pause button disabled.");
     }
 }

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class SentenceGenerator {
-    private static final Logger logger = LoggingConfig.getLogger();
+    private static final Logger LOGGER = LoggingConfig.getLogger();
     private List<String> words;
     private int wordCount;
     private String excludeLetters;
@@ -50,7 +50,7 @@ public class SentenceGenerator {
 	    reader.close();
 	} catch (IOException e) {
 	    e.printStackTrace();
-	    logger.severe("Exception occurred while loading JSON data: " + e.getMessage());
+	    LOGGER.severe("Exception occurred while loading JSON data: " + e.getMessage());
 	    throw new SentenceGeneratorException("Failed to initialize SentenceGenerator", e);
 	}
     }
@@ -73,7 +73,7 @@ public class SentenceGenerator {
 
     public String generateSentence() {
 	if (words == null || words.isEmpty()) {
-	    logger.info("No words available for sentence generation: Word list is empty or not loaded.");
+	    LOGGER.info("No words available for sentence generation: Word list is empty or not loaded.");
 	    return "No words available for sentence generation.";
 	}
 
@@ -86,7 +86,7 @@ public class SentenceGenerator {
 	}
 
 	if (filteredWords.isEmpty()) {
-	    logger.info("No words available for sentence generation: All words contain excluded letters.");
+	    LOGGER.info("No words available for sentence generation: All words contain excluded letters.");
 	    return "No words available for sentence generation.";
 	}
 

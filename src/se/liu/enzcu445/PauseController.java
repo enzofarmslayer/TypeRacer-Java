@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class PauseController {
-    private static final Logger logger = LoggingConfig.getLogger();
+    private static final Logger LOGGER = LoggingConfig.getLogger();
     private boolean isPaused = false;
     private Timer timer;
     private TextPanelComponent textPanelComponent; // Keep reference to TypingLogicHandler
@@ -30,11 +30,11 @@ public class PauseController {
 	if (isPaused) {
 	    timer.stop();
 	    textPanelComponent.getTypingHandler().setFreeze(true); // Pause typing
-	    logger.info("Pause button pressed. Typing and timer paused.");
+	    LOGGER.info("Pause button pressed. Typing and timer paused.");
 	} else {
 	    timer.start();
 	    textPanelComponent.getTypingHandler().setFreeze(false); // Resume typing
-	    logger.info("Pause button pressed again. Typing and timer resumed.");
+	    LOGGER.info("Pause button pressed again. Typing and timer resumed.");
 	}
     }
 

@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class TypingLogicHandler {
-    private static final Logger logger = Logger.getLogger(TypingLogicHandler.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TypingLogicHandler.class.getName());
 
     private JTextPane textPane;
     private String targetSentence;
@@ -92,7 +92,7 @@ public class TypingLogicHandler {
 
 	    doc.insertString(0, targetSentence, null);
 	} catch (BadLocationException e) {
-	    logger.log(Level.SEVERE, "Failed to display sentence", e);
+	    LOGGER.log(Level.SEVERE, "Failed to display sentence", e);
 	    System.exit(1);
 	}
 	updateCaretPosition();

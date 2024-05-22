@@ -26,7 +26,7 @@ public class AverageCpmStatLabel extends AbstractStatLabel
 	    setBackground(Color.WHITE);
 	} else {
 	    double secondsElapsed = hundredthsElapsed / 100.0;
-	    double currentCpm = ((double) typedLength / secondsElapsed) * 60;
+	    double currentCpm = (typedLength / secondsElapsed) * 60;
 	    typingHandler.saveCurrentCpm(currentCpm);
 	    double averageCpm = typingHandler.calculateAverageCpm();
 	    updateLabel("Average CPM: %.2f", averageCpm);

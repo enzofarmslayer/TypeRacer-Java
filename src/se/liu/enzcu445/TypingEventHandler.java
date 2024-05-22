@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class TypingEventHandler implements TypingEventListener, FrameCloseListener, SettingsListener {
-    private static final Logger logger = Logger.getLogger(TypingEventHandler.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TypingEventHandler.class.getName());
     private Timer timer;
     private AbstractStatLabel averageAccuracyLabel;
     private AbstractStatLabel averageCpmLabel;
@@ -40,14 +40,14 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
 
     @Override
     public void onTypingStarted() {
-	logger.info("User started writing");
+	LOGGER.info("User started writing");
 	timer.start();
 	pauseButton.enableButton();
     }
 
     @Override
     public void onTypingCompleted() {
-	logger.info("User completed writing");
+	LOGGER.info("User completed writing");
 	timer.stop();
 	averageAccuracyLabel.update();
 	averageCpmLabel.update();
@@ -58,12 +58,12 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
 	// Create and display the session stats frame
 	SessionStatsFrame statsFrame = new SessionStatsFrame(sessionAccuracyLabel, sessionCpmLabel, this);
 	statsFrame.setVisible(true);
-	logger.info("SessionStatsFrame is visible");
+	LOGGER.info("SessionStatsFrame is visible");
     }
 
     @Override
     public void onFrameClosed() {
-	logger.info("SessionStatsFrame has closed");
+	LOGGER.info("SessionStatsFrame has closed");
 	// Reset necessary variables
 	TypingLogicHandler typingHandler = textPanel.getTypingHandler();
 	typingHandler.resetVariables();
@@ -83,7 +83,7 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
 
     @Override
     public void onSettingsChanged(int wordCount, String excludeLetters) {
-	logger.info("Settings have been changed");
+	LOGGER.info("Settings have been changed");
 	textPanel.updateSettings(wordCount, excludeLetters);
 	timer.reset();
     }
