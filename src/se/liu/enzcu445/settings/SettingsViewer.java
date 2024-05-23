@@ -20,10 +20,13 @@ import java.util.logging.Logger;
  *
  * @since 1.0
  */
-public class SettingsFrame {
+public class SettingsViewer
+{
     private static final Logger LOGGER = LoggingConfig.getLogger();
-    private JTextField wordCountField;
-    private JTextField excludeLettersField;
+    private final int initialWordCount;
+    private final String initialExcludeLetters;
+    private JTextField wordCountField = null;
+    private JTextField excludeLettersField = null;
     private SettingsListener settingsListener;
     private JFrame frame;
     private static final int SETTINGS_FRAME_WIDTH = 300;
@@ -33,8 +36,13 @@ public class SettingsFrame {
     private static final int LOWEST_WORD_COUNT = 10;
     private static final int HIGHEST_WORD_COUNT = 200;
 
-    public SettingsFrame(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
+    public SettingsViewer(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
 	this.settingsListener = settingsListener;
+	this.initialWordCount = initialWordCount;
+	this.initialExcludeLetters = initialExcludeLetters;
+    }
+
+    private void initializeFrame(){
 	frame = new JFrame("Settings");
 	frame.setSize(SETTINGS_FRAME_WIDTH, SETTINGS_FRAME_HEIGHT);
 	frame.setLayout(new GridLayout(SETTINGS_FRAME_ROWS, SETTINGS_FRAME_COLUMNS));
@@ -106,7 +114,8 @@ public class SettingsFrame {
 	}
     }
 
-    public void showSettingsDialog() {
+    public void showSettingsFrame() {
+	initializeFrame();
 	frame.setVisible(true);
     }
 }

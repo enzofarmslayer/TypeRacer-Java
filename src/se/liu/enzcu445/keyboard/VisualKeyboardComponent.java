@@ -47,7 +47,6 @@ public class VisualKeyboardComponent extends JPanel {
 	}
     }
 
-    // Method to get a key component by its label
     public CustomKeyComponent getKeyComponent(String keyLabel) {
 	return keyComponents.get(keyLabel);
     }

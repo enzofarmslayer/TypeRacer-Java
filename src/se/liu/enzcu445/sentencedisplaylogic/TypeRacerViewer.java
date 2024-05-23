@@ -30,13 +30,13 @@ import java.util.logging.Logger;
  */
 public class TypeRacerViewer {
     private static final Logger LOGGER = LoggingConfig.getLogger();
-    private JFrame frame;
+    private JFrame frame = null;
 
     public TypeRacerViewer() {
-        frame = new JFrame("SpeedTyper");
     }
 
     private void initializeFrame() {
+        frame = new JFrame("SpeedTyper");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 

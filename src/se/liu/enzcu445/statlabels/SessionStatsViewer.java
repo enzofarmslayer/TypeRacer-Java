@@ -19,9 +19,18 @@ public class SessionStatsViewer {
     private static final int SESSION_STATS_FRAME_ROWS = 2;
     private static final int SESSION_STATS_FRAME_COLUMNS = 1;
 
-    private JFrame frame;
+    AbstractStatLabel sessionAccuracyLabel;
+    AbstractStatLabel sessionCpmLabel;
+    FrameCloseListener listener;
+
+    private JFrame frame = null;
 
     public SessionStatsViewer(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
+	this.sessionAccuracyLabel = sessionAccuracyLabel;
+	this.sessionCpmLabel = sessionCpmLabel;
+	this.listener = listener;
+    }
+    private void initializeFrame(){
 	frame = new JFrame("Session Stats");
 	frame.setSize(SESSION_STATS_FRAME_WIDTH, SESSION_STATS_FRAME_HEIGHT);
 	frame.setLocationRelativeTo(null);
@@ -46,6 +55,7 @@ public class SessionStatsViewer {
     }
 
     public void show() {
+	initializeFrame();
 	frame.setVisible(true);
     }
 

@@ -4,7 +4,6 @@ import se.liu.enzcu445.LoggingConfig;
 
 import javax.swing.*;
 import java.util.logging.Logger;
-import java.awt.event.ActionListener;
 
 /**
  * PauseButton is a custom component that controls the pause and resume functionality of the application.

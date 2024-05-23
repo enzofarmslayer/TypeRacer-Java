@@ -9,7 +9,7 @@ import javax.swing.*;
  * <p>Responsibilities:</p>
  * <ul>
  *   <li>Initializes the button with a label and sets up an action listener.</li>
- *   <li>Opens the {@link SettingsFrame} when the button is clicked.</li>
+ *   <li>Opens the {@link SettingsViewer} when the button is clicked.</li>
  * </ul>
  *
  * @since 1.0
@@ -32,8 +32,8 @@ public class SettingsButton {
     }
 
     private void initializeButton() {
-	SettingsFrame settingsFrame = new SettingsFrame(settingsListener, initialWordCount, initialExcludeLetters);
-	button.addActionListener(e -> settingsFrame.showSettingsDialog());
+	SettingsViewer settingsViewer = new SettingsViewer(settingsListener, initialWordCount, initialExcludeLetters);
+	button.addActionListener(e -> settingsViewer.showSettingsFrame());
     }
 
     public JButton getButton() {

@@ -41,8 +41,8 @@ public class SentenceGenerator {
 
 	    // Use Gson to parse the JSON into a List of Strings
 	    InputStreamReader reader = new InputStreamReader(inputStream);
-	    Type formOfList = new TypeToken<List<String>>() {}.getType();
-	    words = new Gson().fromJson(reader, formOfList);
+	    Type listType = new TypeToken<List<String>>() {}.getType();
+	    words = new Gson().fromJson(reader, listType);
 
 	    reader.close();
 	} catch (IOException e) {
