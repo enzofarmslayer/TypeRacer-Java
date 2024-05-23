@@ -18,31 +18,30 @@ import java.awt.*;
 public class TimerLabel extends JLabel {
     private Timer timer;
     private static final int LABEL_BORDER_THICKNESS = 2;
+    private static final int HUNDREDS_PER_SECONDS = 100;
+    private static final int SECONDS_PER_MINUTES = 60;
+
     public TimerLabel(Timer timer) {
 	super("Time: 0:00.00", SwingConstants.CENTER);  // Set initial text and alignment
 	this.timer = timer;
 
-
-
 	setBorder(BorderFactory.createLineBorder(Color.BLACK, LABEL_BORDER_THICKNESS));
 	setOpaque(true);
 	setBackground(Color.WHITE);
-	setupTimer();
+	initializeTimer();
     }
 
-    private void setupTimer() {
+    private void initializeTimer() {
 	timer.setTickObserver(this::updateLabel);
     }
 
     private void updateLabel() {
-	final int hundredsInSeconds = 100;
-	final int secondsInMinutes = 60;
 
 	int hundredthsElapsed = timer.getHundredthsElapsed();
-	int seconds = hundredthsElapsed / hundredsInSeconds;
-	int minutes = seconds / secondsInMinutes;
-	seconds %= secondsInMinutes;
-	int hundredths = hundredthsElapsed % 100;
+	int seconds = hundredthsElapsed / HUNDREDS_PER_SECONDS;
+	int minutes = seconds / SECONDS_PER_MINUTES;
+	seconds %= SECONDS_PER_MINUTES;
+	int hundredths = hundredthsElapsed % HUNDREDS_PER_SECONDS;
 	setText(String.format("Time: %d:%02d.%02d", minutes, seconds, hundredths));
     }
 }

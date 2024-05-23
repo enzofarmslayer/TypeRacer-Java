@@ -29,11 +29,12 @@ import java.awt.*;
 public abstract class AbstractStatLabel extends JLabel implements LabelUpdater {
     protected TypingLogicHandler typingHandler;
     protected double previousValue = -1.0;
+    private static final int LABEL_THICKNESS = 2;
 
     protected AbstractStatLabel(TextPanelComponent textPanelComponent, String initialText) {
 	super(initialText, SwingConstants.CENTER);
 	this.typingHandler = textPanelComponent.getTypingHandler();
-	setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+	setBorder(BorderFactory.createLineBorder(Color.BLACK, LABEL_THICKNESS));
 	setOpaque(true);
 	setBackground(Color.WHITE);
     }

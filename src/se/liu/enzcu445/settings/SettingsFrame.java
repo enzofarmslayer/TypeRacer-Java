@@ -25,10 +25,10 @@ public class SettingsFrame extends JFrame {
     private JTextField wordCountField;
     private JTextField excludeLettersField;
     private SettingsListener settingsListener;
-    private static final int SETTINGSFRAME_WIDTH = 300;
-    private static final int SETTINGSFRAME_HEIGHT = 200;
-    private static final int SETTINGSFRAME_ROWS = 3;
-    private static final int SETTINGSFRAME_COLUMNS = 2;
+    private static final int SETTINGS_FRAME_WIDTH = 300;
+    private static final int SETTINGS_FRAME_HEIGHT = 200;
+    private static final int SETTINGS_FRAME_ROWS = 3;
+    private static final int SETTINGS_FRAME_COLUMNS = 2;
     private static final int LOWEST_WORD_COUNT = 10;
     private static final int HIGHEST_WORD_COUNT = 200;
 
@@ -37,8 +37,8 @@ public class SettingsFrame extends JFrame {
     public SettingsFrame(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
 	this.settingsListener = settingsListener;
 	setTitle("Settings");
-	setSize(SETTINGSFRAME_WIDTH, SETTINGSFRAME_HEIGHT);
-	setLayout(new GridLayout(SETTINGSFRAME_ROWS, SETTINGSFRAME_COLUMNS));
+	setSize(SETTINGS_FRAME_WIDTH, SETTINGS_FRAME_HEIGHT);
+	setLayout(new GridLayout(SETTINGS_FRAME_ROWS, SETTINGS_FRAME_COLUMNS));
 
 	// Antal ord inställningar
 	add(new JLabel("Number of words:"));
