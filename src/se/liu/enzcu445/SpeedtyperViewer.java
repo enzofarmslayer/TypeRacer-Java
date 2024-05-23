@@ -45,7 +45,7 @@ public class SpeedtyperViewer extends JFrame {
         }
 
         AverageAccuracyStatLabel averageAccuracyLabel = new AverageAccuracyStatLabel(textPanel);
-        AverageCpmStatLabel averageCpmLabel = new AverageCpmStatLabel(textPanel, timer);
+        AverageCPMStatLabel averageCpmLabel = new AverageCPMStatLabel(textPanel, timer);
 
         SessionAccuracyStatLabel sessionAccuracyLabel = new SessionAccuracyStatLabel(textPanel);
         SessionCpmStatLabel sessionCpmLabel = new SessionCpmStatLabel(textPanel, timer);

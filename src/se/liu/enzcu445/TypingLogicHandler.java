@@ -41,8 +41,8 @@ public class TypingLogicHandler {
     private double currentAccuracy;
     private double sumAccuracy;
     private int accuracyCount;
-    private double totalCpm = 0.0;
-    private int cpmCount = 0;
+    private double totalCPM = 0.0;
+    private int sessionCount = 0;
 
     public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) throws TypingLogicException {
 	this.textPane = textPane;
@@ -151,10 +151,10 @@ public class TypingLogicHandler {
     }
 
     private void applyStyleToChar(int position, Color color) {
-	SimpleAttributeSet attrs = new SimpleAttributeSet();
-	StyleConstants.setForeground(attrs, color);
+	SimpleAttributeSet simpleAttributeSet = new SimpleAttributeSet();
+	StyleConstants.setForeground(simpleAttributeSet, color);
 	StyledDocument doc = textPane.getStyledDocument();
-	doc.setCharacterAttributes(position, 1, attrs, false);
+	doc.setCharacterAttributes(position, 1, simpleAttributeSet, false);
     }
 
     private void updateCaretPosition() {
@@ -192,15 +192,15 @@ public class TypingLogicHandler {
 	return sumAccuracy / accuracyCount;
     }
 
-    public void saveCurrentCpm(double cpm) {
-	totalCpm += cpm;
-	cpmCount++;
+    public void saveCurrentCPM(double cpm) {
+	totalCPM += cpm;
+	sessionCount++;
     }
 
     public double calculateAverageCpm() {
-	if (cpmCount == 0) {
+	if (sessionCount == 0) {
 	    return 0.0;
 	}
-	return totalCpm / cpmCount;
+	return totalCPM / sessionCount;
     }
 }

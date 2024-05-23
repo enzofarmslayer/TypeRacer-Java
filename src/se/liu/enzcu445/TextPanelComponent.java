@@ -24,12 +24,7 @@ public class TextPanelComponent extends JPanel {
     private SentenceGenerator sentenceGenerator;
     private TypingLogicHandler typingHandler;
 
-    private int wordCount;
-    private String excludeLetters;
-
-    public TextPanelComponent(TypingEventListener typingEventListener, int wordCount, String excludeLetters) throws TextPanelException {
-	this.wordCount = wordCount;
-	this.excludeLetters = excludeLetters;
+    public TextPanelComponent(TypingEventListener typingEventListener, int wordCount, String excludedLetters) throws TextPanelException {
 
 	JTextPane sentencePane = new JTextPane();
 	sentencePane.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -40,10 +35,10 @@ public class TextPanelComponent extends JPanel {
 	// Set the editor kit to enable wrapping
 	sentencePane.setEditorKit(new WrapEditorKit());
 
-	SimpleAttributeSet attrs = new SimpleAttributeSet();
-	StyleConstants.setAlignment(attrs, StyleConstants.ALIGN_CENTER);
+	SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+	StyleConstants.setAlignment(attributeSet, StyleConstants.ALIGN_CENTER);
 	StyledDocument doc = sentencePane.getStyledDocument();
-	doc.setParagraphAttributes(0, doc.getLength(), attrs, false);
+	doc.setParagraphAttributes(0, doc.getLength(), attributeSet, false);
 
 	this.setLayout(new BorderLayout());
 	this.add(new JScrollPane(sentencePane), BorderLayout.CENTER);
@@ -52,7 +47,7 @@ public class TextPanelComponent extends JPanel {
 	this.setBorder(blackBorder);
 
 	try {
-	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludeLetters);
+	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludedLetters);
 	    typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
 	} catch (SentenceGeneratorException | TypingLogicException e) {
 	    LOGGER.severe("Failed to create inner components: " + e.getMessage());
@@ -73,13 +68,11 @@ public class TextPanelComponent extends JPanel {
     }
 
     public void resetDisplaySentence() {
-	    typingHandler.setTargetSentence(generateSentence());
-	    typingHandler.displaySentence();
+	typingHandler.setTargetSentence(generateSentence());
+	typingHandler.displaySentence();
     }
 
     public void updateSettings(int wordCount, String excludeLetters) {
-	this.wordCount = wordCount;
-	this.excludeLetters = excludeLetters;
 	sentenceGenerator.setWordCount(wordCount);
 	sentenceGenerator.setExcludeLetters(excludeLetters);
 

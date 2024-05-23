@@ -7,11 +7,11 @@ import java.awt.*;
  *
  * @since 1.0
  */
-public class AverageCpmStatLabel extends AbstractStatLabel
+public class AverageCPMStatLabel extends AbstractStatLabel
 {
     private Timer timer;
 
-    public AverageCpmStatLabel(TextPanelComponent textPanelComponent, Timer timer) {
+    public AverageCPMStatLabel(TextPanelComponent textPanelComponent, Timer timer) {
 	super(textPanelComponent, "Average CPM: --");
 	this.timer = timer;
     }
@@ -26,10 +26,10 @@ public class AverageCpmStatLabel extends AbstractStatLabel
 	    setBackground(Color.WHITE);
 	} else {
 	    double secondsElapsed = hundredthsElapsed / 100.0;
-	    double currentCpm = (typedLength / secondsElapsed) * 60;
-	    typingHandler.saveCurrentCpm(currentCpm);
-	    double averageCpm = typingHandler.calculateAverageCpm();
-	    updateLabel("Average CPM: %.2f", averageCpm);
+	    double currentCPM = (typedLength / secondsElapsed) * 60;
+	    typingHandler.saveCurrentCPM(currentCPM);
+	    double averageCPM = typingHandler.calculateAverageCpm();
+	    updateLabel("Average CPM: %.2f", averageCPM);
 	}
     }
 }
