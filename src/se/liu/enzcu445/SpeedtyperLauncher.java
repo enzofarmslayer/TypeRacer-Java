@@ -1,5 +1,7 @@
 package se.liu.enzcu445;
 
+import se.liu.enzcu445.visualcomponents.SpeedtyperViewer;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
