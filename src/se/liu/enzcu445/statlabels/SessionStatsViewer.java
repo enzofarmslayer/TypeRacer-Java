@@ -13,13 +13,13 @@ import java.awt.event.WindowEvent;
  *
  * @since 1.0
  */
-public class SessionStatsFrame extends JFrame {
+public class SessionStatsViewer extends JFrame {
     private static final int SESSION_STATS_FRAME_WIDTH = 300;
     private static final int SESSION_STATS_FRAME_HEIGHT = 200;
     private static final int SESSION_STATS_FRAME_ROWS = 2;
     private static final int SESSION_STATS_FRAME_COLUMNS = 1;
 
-    public SessionStatsFrame(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
+    public SessionStatsViewer(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
 	setTitle("Session Stats");
 	setSize(SESSION_STATS_FRAME_WIDTH, SESSION_STATS_FRAME_HEIGHT);
 	setLocationRelativeTo(null);

@@ -46,7 +46,7 @@ public class TypingLogicHandler {
     private int sessionCount = 0;
     private static final double DEFAULT_ACCURACY = 100.0;
     private static final double DEFAULT_CPM = 0.0;
-    private static final int PROCENTIGE_MULTIPLIER = 100;
+    private static final int PROCENTAGE_MULTIPLIER = 100;
 
     public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) {
 	this.textPane = textPane;
@@ -153,10 +153,10 @@ public class TypingLogicHandler {
     }
 
     private void applyStyleToChar(int position, Color color) {
-	SimpleAttributeSet simpleAttributeSet = new SimpleAttributeSet();
-	StyleConstants.setForeground(simpleAttributeSet, color);
+	SimpleAttributeSet simpleAttribute = new SimpleAttributeSet();
+	StyleConstants.setForeground(simpleAttribute, color);
 	StyledDocument doc = textPane.getStyledDocument();
-	doc.setCharacterAttributes(position, 1, simpleAttributeSet, false);
+	doc.setCharacterAttributes(position, 1, simpleAttribute, false);
     }
 
     private void updateCaretPosition() {
@@ -177,7 +177,7 @@ public class TypingLogicHandler {
 	    return DEFAULT_ACCURACY; // If nothing typed yet, accuracy is 100%
 	}
 	int correctKeyPresses = totalKeyPresses - getTypingErrorCount();
-	currentAccuracy = ((double) correctKeyPresses / totalKeyPresses) * PROCENTIGE_MULTIPLIER;
+	currentAccuracy = ((double) correctKeyPresses / totalKeyPresses) * PROCENTAGE_MULTIPLIER;
 	return currentAccuracy;
     }
 

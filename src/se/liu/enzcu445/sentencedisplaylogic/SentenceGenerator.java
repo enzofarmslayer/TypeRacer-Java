@@ -30,6 +30,7 @@ public class SentenceGenerator {
     private List<String> words;
     private int wordCount;
     private String excludeLetters;
+    private static final Random RANDOM = new Random();
 
     public SentenceGenerator(String jsonFilePath, int wordCount, String excludeLetters) throws SentenceGeneratorException {
 	this.wordCount = wordCount;
@@ -86,15 +87,14 @@ public class SentenceGenerator {
 	    return "No words available for sentence generation.";
 	}
 
-	Random random = new Random();
 	StringBuilder sentence = new StringBuilder();
 
 	// Generate a random sentence with the specified number of words
 	for (int i = 0; i < wordCount; i++) {
 	    if (i < wordCount - 1) {
-		sentence.append(filteredWords.get(random.nextInt(filteredWords.size()))).append("•");
+		sentence.append(filteredWords.get(RANDOM.nextInt(filteredWords.size()))).append("•");
 	    } else {
-		sentence.append(filteredWords.get(random.nextInt(filteredWords.size())));
+		sentence.append(filteredWords.get(RANDOM.nextInt(filteredWords.size())));
 	    }
 	}
 

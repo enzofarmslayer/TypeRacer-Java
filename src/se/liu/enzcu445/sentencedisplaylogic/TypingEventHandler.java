@@ -3,7 +3,7 @@ package se.liu.enzcu445.sentencedisplaylogic;
 import se.liu.enzcu445.settings.SettingsListener;
 import se.liu.enzcu445.statlabels.AbstractStatLabel;
 import se.liu.enzcu445.pause.PauseButton;
-import se.liu.enzcu445.statlabels.SessionStatsFrame;
+import se.liu.enzcu445.statlabels.SessionStatsViewer;
 
 import java.util.logging.Logger;
 
@@ -61,7 +61,7 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
 	pauseButton.disableButton();
 
 	// Create and display the session stats frame
-	SessionStatsFrame statsFrame = new SessionStatsFrame(sessionAccuracyLabel, sessionCpmLabel, this);
+	SessionStatsViewer statsFrame = new SessionStatsViewer(sessionAccuracyLabel, sessionCpmLabel, this);
 	statsFrame.setVisible(true);
 	LOGGER.info("SessionStatsFrame is visible");
     }

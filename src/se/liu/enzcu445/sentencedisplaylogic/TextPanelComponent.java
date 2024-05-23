@@ -38,10 +38,10 @@ public class TextPanelComponent extends JPanel {
 	// Set the editor kit to enable wrapping
 	sentencePane.setEditorKit(new WrapEditorKit());
 
-	SimpleAttributeSet attributeSet = new SimpleAttributeSet();
-	StyleConstants.setAlignment(attributeSet, StyleConstants.ALIGN_CENTER);
+	SimpleAttributeSet simpleAttribute = new SimpleAttributeSet();
+	StyleConstants.setAlignment(simpleAttribute, StyleConstants.ALIGN_CENTER);
 	StyledDocument doc = sentencePane.getStyledDocument();
-	doc.setParagraphAttributes(0, doc.getLength(), attributeSet, false);
+	doc.setParagraphAttributes(0, doc.getLength(), simpleAttribute, false);
 
 	this.setLayout(new BorderLayout());
 	this.add(new JScrollPane(sentencePane), BorderLayout.CENTER);

@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @since 1.0
  */
-public class SettingsFrame extends JFrame {
+public class SettingsViewer extends JFrame {
     private static final Logger LOGGER = LoggingConfig.getLogger();
     private JTextField wordCountField;
     private JTextField excludeLettersField;
@@ -34,7 +34,7 @@ public class SettingsFrame extends JFrame {
 
 
 
-    public SettingsFrame(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
+    public SettingsViewer(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
 	this.settingsListener = settingsListener;
 	setTitle("Settings");
 	setSize(SETTINGS_FRAME_WIDTH, SETTINGS_FRAME_HEIGHT);
@@ -53,16 +53,16 @@ public class SettingsFrame extends JFrame {
 	// Add DocumentFilter to restrict input to English letters only
 	((AbstractDocument) excludeLettersField.getDocument()).setDocumentFilter(new DocumentFilter() {
 	    @Override
-	    public void insertString(FilterBypass fb, int offset, String excludedLetters, AttributeSet attributeSet) throws BadLocationException {
+	    public void insertString(FilterBypass fb, int offset, String excludedLetters, AttributeSet attribute) throws BadLocationException {
 		if (excludedLetters != null && excludedLetters.matches("[a-zA-Z]+")) {
-		    super.insertString(fb, offset, excludedLetters, attributeSet);
+		    super.insertString(fb, offset, excludedLetters, attribute);
 		}
 	    }
 
 	    @Override
-	    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attributeSet) throws BadLocationException {
+	    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attribute) throws BadLocationException {
 		if (text != null && text.matches("[a-zA-Z]+")) {
-		    super.replace(fb, offset, length, text, attributeSet);
+		    super.replace(fb, offset, length, text, attribute);
 		}
 	    }
 	});

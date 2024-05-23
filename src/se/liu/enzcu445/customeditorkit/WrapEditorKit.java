@@ -10,10 +10,10 @@ import javax.swing.text.*;
  * @since 1.0
  */
 public class WrapEditorKit extends StyledEditorKit {
-    private ViewFactory defaultFactory = new WrapColumnFactory();
+    private ViewFactory viewFactory = new WrapColumnFactory();
 
     @Override
     public ViewFactory getViewFactory() {
-	return defaultFactory;
+	return viewFactory;
     }
 }

@@ -46,7 +46,8 @@ public class TypeRacerViewer extends JFrame {
         topPanel.add(timerLabel);
 
 	TextPanelComponent textPanel = null;
-	try {
+
+        try {
 	    textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
         } catch (TextPanelException e) {
             LOGGER.severe("Failed to initialize TextPanelComponent: " + e.getMessage());
@@ -104,7 +105,7 @@ public class TypeRacerViewer extends JFrame {
         frame.setLocationRelativeTo(null);
     }
 
-    private void showErrorDialog(String message) {
+    public void showErrorDialog(String message) {
         JOptionPane.showMessageDialog(frame, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 

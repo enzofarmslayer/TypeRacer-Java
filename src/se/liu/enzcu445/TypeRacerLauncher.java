@@ -28,15 +28,19 @@ public class TypeRacerLauncher
     private static final Logger LOGGER = Logger.getLogger(TypeRacerLauncher.class.getName());
 
     public static void main(String[] args) {
+	//TypeRacerViewer viewer = null;
+	TypeRacerViewer viewer = null;
 	try {
 	    LoggingConfig.initialize();
 	    LOGGER.info("Program starts...");
 
-	    TypeRacerViewer viewer = new TypeRacerViewer();
+	    viewer = new TypeRacerViewer();
+
 	    viewer.show();
 
 	    LOGGER.info("Program has started");
 	} catch (IOException e) {
+	    viewer.showErrorDialog("Could not configure logging");
 	    LOGGER.log(Level.SEVERE, "Could not configure logging", e);
 	}
     }
