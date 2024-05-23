@@ -8,32 +8,34 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * SessionStatsFrame is a JFrame that displays session statistics including accuracy and CPM.
+ * SessionStatsViewer is a custom component that displays session statistics including accuracy and CPM.
  * It manages a window that shows the provided {@link AbstractStatLabel} components for session accuracy and CPM.
  *
  * @since 1.0
  */
-public class SessionStatsViewer extends JFrame {
+public class SessionStatsViewer {
     private static final int SESSION_STATS_FRAME_WIDTH = 300;
     private static final int SESSION_STATS_FRAME_HEIGHT = 200;
     private static final int SESSION_STATS_FRAME_ROWS = 2;
     private static final int SESSION_STATS_FRAME_COLUMNS = 1;
 
+    private JFrame frame;
+
     public SessionStatsViewer(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
-	setTitle("Session Stats");
-	setSize(SESSION_STATS_FRAME_WIDTH, SESSION_STATS_FRAME_HEIGHT);
-	setLocationRelativeTo(null);
-	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	frame = new JFrame("Session Stats");
+	frame.setSize(SESSION_STATS_FRAME_WIDTH, SESSION_STATS_FRAME_HEIGHT);
+	frame.setLocationRelativeTo(null);
+	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	JPanel panel = new JPanel();
 	panel.setLayout(new GridLayout(SESSION_STATS_FRAME_ROWS, SESSION_STATS_FRAME_COLUMNS));
 
-	panel.add(sessionCpmLabel);
-	panel.add(sessionAccuracyLabel);
+	panel.add(sessionCpmLabel.getComponent());
+	panel.add(sessionAccuracyLabel.getComponent());
 
-	add(panel);
+	frame.add(panel);
 
-	addWindowListener(new WindowAdapter() {
+	frame.addWindowListener(new WindowAdapter() {
 	    @Override
 	    public void windowClosing(WindowEvent e) {
 		if (listener != null) {
@@ -42,4 +44,9 @@ public class SessionStatsViewer extends JFrame {
 	    }
 	});
     }
+
+    public void show() {
+	frame.setVisible(true);
+    }
+
 }

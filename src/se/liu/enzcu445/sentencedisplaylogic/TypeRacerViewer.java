@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
- * SpeedtyperViewer is the main frame for the SpeedTyper application.
+ * TypeRacerViewer is the main frame for the SpeedTyper application.
  * It sets up the main user interface components and manages the application's main window.
  *
  * <p>Responsibilities:</p>
@@ -28,11 +28,12 @@ import java.util.logging.Logger;
  *
  * @since 1.0
  */
-public class TypeRacerViewer extends JFrame {
+public class TypeRacerViewer {
     private static final Logger LOGGER = LoggingConfig.getLogger();
-    private JFrame frame = new JFrame("SpeedTyper");
+    private JFrame frame;
 
     public TypeRacerViewer() {
+        frame = new JFrame("SpeedTyper");
     }
 
     private void initializeFrame() {
@@ -43,12 +44,12 @@ public class TypeRacerViewer extends JFrame {
 
         Timer timer = new Timer();
         TimerLabel timerLabel = new TimerLabel(timer);
-        topPanel.add(timerLabel);
+        topPanel.add(timerLabel.getComponent());
 
-	TextPanelComponent textPanel = null;
+        TextPanelComponent textPanel = null;
 
         try {
-	    textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
+            textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
         } catch (TextPanelException e) {
             LOGGER.severe("Failed to initialize TextPanelComponent: " + e.getMessage());
             showErrorDialog("Failed to initialize TextPanelComponent: " + e.getMessage());
@@ -64,20 +65,20 @@ public class TypeRacerViewer extends JFrame {
         PauseController pauseController = new PauseController(timer, textPanel);
         PauseButton pauseButton = new PauseButton(pauseController);
 
-	TypingEventHandler typingEventHandler =
-		new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel, pauseButton, sessionAccuracyLabel, sessionCpmLabel,
-				       textPanel);
+        TypingEventHandler typingEventHandler =
+                new TypingEventHandler(timer, averageAccuracyLabel, averageCpmLabel, pauseButton, sessionAccuracyLabel, sessionCpmLabel,
+                                       textPanel);
 
         textPanel.setTypingCompletionHandler(typingEventHandler); // Set the handler after creation
         textPanel.getTypingHandler().setTypingEventListener(typingEventHandler); // Set typing event listener
 
-        topPanel.add(pauseButton);
-        topPanel.add(averageCpmLabel);
-        topPanel.add(averageAccuracyLabel);
+        topPanel.add(pauseButton.getButton());
+        topPanel.add(averageCpmLabel.getComponent());
+        topPanel.add(averageAccuracyLabel.getComponent());
 
         // Lägg till inställningsknappen som en egen klass
         SettingsButton settingsButton = new SettingsButton(typingEventHandler, textPanel.getSentenceGenerator().getWordCount(), textPanel.getSentenceGenerator().getExcludeLetters());
-        topPanel.add(settingsButton);
+        topPanel.add(settingsButton.getButton());
 
         topPanel.setPreferredSize(new Dimension(frame.getWidth(), 100));
         frame.add(topPanel, BorderLayout.NORTH);

@@ -62,7 +62,7 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
 
 	// Create and display the session stats frame
 	SessionStatsViewer statsFrame = new SessionStatsViewer(sessionAccuracyLabel, sessionCpmLabel, this);
-	statsFrame.setVisible(true);
+	statsFrame.show();
 	LOGGER.info("SessionStatsFrame is visible");
     }
 

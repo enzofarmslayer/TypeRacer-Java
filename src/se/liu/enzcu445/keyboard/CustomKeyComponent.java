@@ -21,6 +21,7 @@ public class CustomKeyComponent extends JComponent {
     private Color highlightColor = Color.YELLOW;
     private Color currentColor = defaultColor;
     private String keyLabel;
+    private static final int STRING_OFFSET = 10;
 
     public CustomKeyComponent(String keyLabel) {
 	this.keyLabel = keyLabel;
@@ -80,6 +81,6 @@ public class CustomKeyComponent extends JComponent {
 	g.setColor(currentColor);
 	g.fillRect(0, 0, getWidth(), getHeight()); // Draw the key background
 	g.setColor(Color.BLACK);
-	g.drawString(keyLabel, 10, getHeight() / 2); // Adjust text positioning as needed
+	g.drawString(keyLabel, STRING_OFFSET, getHeight() / 2); // Adjust text positioning as needed
     }
 }

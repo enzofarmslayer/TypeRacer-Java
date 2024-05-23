@@ -4,9 +4,10 @@ import se.liu.enzcu445.LoggingConfig;
 
 import javax.swing.*;
 import java.util.logging.Logger;
+import java.awt.event.ActionListener;
 
 /**
- * PauseButton is a custom JButton that controls the pause and resume functionality of the application.
+ * PauseButton is a custom component that controls the pause and resume functionality of the application.
  * It interacts with a {@link PauseController} to toggle the pause state and updates its label accordingly.
  *
  * <p>Responsibilities:</p>
@@ -18,16 +19,17 @@ import java.util.logging.Logger;
  *
  * @since 1.0
  */
-public class PauseButton extends JButton {
+public class PauseButton {
     private static final Logger LOGGER = LoggingConfig.getLogger();
+    private JButton button;
     private PauseController pauseController;
 
     public PauseButton(PauseController pauseController) {
-	super("Pause");
 	this.pauseController = pauseController;
+	button = new JButton("Pause");
 
-	setFocusable(false);
-	this.addActionListener(e -> togglePause());
+	button.setFocusable(false);
+	button.addActionListener(e -> togglePause());
 	disableButton();
     }
 
@@ -40,19 +42,23 @@ public class PauseButton extends JButton {
 
     private void updateButtonLabel() {
 	if (pauseController.isPaused()) {
-	    setText("Resume");
+	    button.setText("Resume");
 	} else {
-	    setText("Pause");
+	    button.setText("Pause");
 	}
     }
 
     public void enableButton() {
-	setEnabled(true);
+	button.setEnabled(true);
 	LOGGER.info("Pause button enabled.");
     }
 
     public void disableButton() {
-	setEnabled(false);
+	button.setEnabled(false);
 	LOGGER.info("Pause button disabled.");
+    }
+
+    public JButton getButton() {
+	return button;
     }
 }

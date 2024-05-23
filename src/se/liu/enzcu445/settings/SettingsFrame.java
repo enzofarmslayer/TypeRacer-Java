@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
- * SettingsFrame is a JFrame that allows users to adjust settings such as the word count and excluded letters.
+ * SettingsFrame is a custom component that allows users to adjust settings such as the word count and excluded letters.
  * It interacts with a {@link SettingsListener} to notify about changes in settings.
  *
  * <p>Responsibilities:</p>
@@ -20,11 +20,12 @@ import java.util.logging.Logger;
  *
  * @since 1.0
  */
-public class SettingsViewer extends JFrame {
+public class SettingsFrame {
     private static final Logger LOGGER = LoggingConfig.getLogger();
     private JTextField wordCountField;
     private JTextField excludeLettersField;
     private SettingsListener settingsListener;
+    private JFrame frame;
     private static final int SETTINGS_FRAME_WIDTH = 300;
     private static final int SETTINGS_FRAME_HEIGHT = 200;
     private static final int SETTINGS_FRAME_ROWS = 3;
@@ -32,23 +33,21 @@ public class SettingsViewer extends JFrame {
     private static final int LOWEST_WORD_COUNT = 10;
     private static final int HIGHEST_WORD_COUNT = 200;
 
-
-
-    public SettingsViewer(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
+    public SettingsFrame(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
 	this.settingsListener = settingsListener;
-	setTitle("Settings");
-	setSize(SETTINGS_FRAME_WIDTH, SETTINGS_FRAME_HEIGHT);
-	setLayout(new GridLayout(SETTINGS_FRAME_ROWS, SETTINGS_FRAME_COLUMNS));
+	frame = new JFrame("Settings");
+	frame.setSize(SETTINGS_FRAME_WIDTH, SETTINGS_FRAME_HEIGHT);
+	frame.setLayout(new GridLayout(SETTINGS_FRAME_ROWS, SETTINGS_FRAME_COLUMNS));
 
 	// Antal ord inställningar
-	add(new JLabel("Number of words:"));
+	frame.add(new JLabel("Number of words:"));
 	wordCountField = new JTextField(String.valueOf(initialWordCount));
-	add(wordCountField);
+	frame.add(wordCountField);
 
 	// Uteslut bokstäver inställningar
-	add(new JLabel("Exclude letters:"));
+	frame.add(new JLabel("Exclude letters:"));
 	excludeLettersField = new JTextField(initialExcludeLetters);
-	add(excludeLettersField);
+	frame.add(excludeLettersField);
 
 	// Add DocumentFilter to restrict input to English letters only
 	((AbstractDocument) excludeLettersField.getDocument()).setDocumentFilter(new DocumentFilter() {
@@ -70,10 +69,9 @@ public class SettingsViewer extends JFrame {
 	// Spara-knapp
 	JButton saveButton = new JButton("Save");
 	saveButton.addActionListener(e -> saveSettings());
-	add(saveButton);
+	frame.add(saveButton);
 
-	setLocationRelativeTo(null);
-	setVisible(true);
+	frame.setLocationRelativeTo(null);
     }
 
     private void saveSettings() {
@@ -85,19 +83,19 @@ public class SettingsViewer extends JFrame {
 	    settingsListener.onSettingsChanged(wordCount, excludeLetters);
 
 	    // Stäng inställningsramen
-	    dispose();
+	    frame.dispose();
 	} catch (InvalidSettingsException e) {
 	    LOGGER.warning("Invalid settings: " + e.getMessage());
-	    JOptionPane.showMessageDialog(this, e.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
+	    JOptionPane.showMessageDialog(frame, e.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
 	}
     }
 
     private int validateWordCount(String text) throws InvalidSettingsException {
-	    int wordCount = Integer.parseInt(text);
-	    if (wordCount < LOWEST_WORD_COUNT || wordCount > HIGHEST_WORD_COUNT) {
-		throw new InvalidSettingsException("Word count must be between 10 and 200.");
-	    }
-	    return wordCount;
+	int wordCount = Integer.parseInt(text);
+	if (wordCount < LOWEST_WORD_COUNT || wordCount > HIGHEST_WORD_COUNT) {
+	    throw new InvalidSettingsException("Word count must be between 10 and 200.");
+	}
+	return wordCount;
     }
 
     private String validateExcludeLetters(String text) throws InvalidSettingsException {
@@ -106,5 +104,9 @@ public class SettingsViewer extends JFrame {
 	} else {
 	    throw new InvalidSettingsException("Exclude letters field can only contain English letters.");
 	}
+    }
+
+    public void showSettingsDialog() {
+	frame.setVisible(true);
     }
 }

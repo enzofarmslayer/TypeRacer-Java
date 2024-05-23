@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * TimerLabel is a custom JLabel that displays the elapsed time tracked by a {@link Timer}.
+ * TimerLabel is a custom component that displays the elapsed time tracked by a {@link Timer}.
  * It updates the label text to show the current elapsed time in minutes, seconds, and hundredths of a second.
  *
  * <p>Responsibilities:</p>
@@ -15,19 +15,20 @@ import java.awt.*;
  *
  * @since 1.0
  */
-public class TimerLabel extends JLabel {
+public class TimerLabel {
+    private JLabel label;
     private Timer timer;
     private static final int LABEL_BORDER_THICKNESS = 2;
-    private static final int HUNDREDS_PER_SECONDS = 100;
-    private static final int SECONDS_PER_MINUTES = 60;
+    private static final int HUNDREDTHS_PER_SECOND = 100;
+    private static final int SECONDS_PER_MINUTE = 60;
 
     public TimerLabel(Timer timer) {
-	super("Time: 0:00.00", SwingConstants.CENTER);  // Set initial text and alignment
+	label = new JLabel("Time: 0:00.00", SwingConstants.CENTER);  // Set initial text and alignment
 	this.timer = timer;
 
-	setBorder(BorderFactory.createLineBorder(Color.BLACK, LABEL_BORDER_THICKNESS));
-	setOpaque(true);
-	setBackground(Color.WHITE);
+	label.setBorder(BorderFactory.createLineBorder(Color.BLACK, LABEL_BORDER_THICKNESS));
+	label.setOpaque(true);
+	label.setBackground(Color.WHITE);
 	initializeTimer();
     }
 
@@ -36,12 +37,16 @@ public class TimerLabel extends JLabel {
     }
 
     private void updateLabel() {
-
 	int hundredthsElapsed = timer.getHundredthsElapsed();
-	int seconds = hundredthsElapsed / HUNDREDS_PER_SECONDS;
-	int minutes = seconds / SECONDS_PER_MINUTES;
-	seconds %= SECONDS_PER_MINUTES;
-	int hundredths = hundredthsElapsed % HUNDREDS_PER_SECONDS;
-	setText(String.format("Time: %d:%02d.%02d", minutes, seconds, hundredths));
+	int seconds = hundredthsElapsed / HUNDREDTHS_PER_SECOND;
+	int minutes = seconds / SECONDS_PER_MINUTE;
+	seconds %= SECONDS_PER_MINUTE;
+	int hundredths = hundredthsElapsed % HUNDREDTHS_PER_SECOND;
+	label.setText(String.format("Time: %d:%02d.%02d", minutes, seconds, hundredths));
+    }
+
+    public JComponent getComponent() {
+	return label;
     }
 }
+
