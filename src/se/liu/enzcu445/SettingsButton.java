@@ -1,8 +1,7 @@
 package se.liu.enzcu445;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 /**
  * SettingsButton is a custom JButton that opens a settings frame when clicked.
@@ -22,11 +21,6 @@ public class SettingsButton extends JButton {
 	super("Settings");
 	setFocusable(false);
 
-	addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		new SettingsFrame(settingsListener, initialWordCount, initialExcludeLetters);
-	    }
-	});
+	addActionListener(e -> new SettingsFrame(settingsListener, initialWordCount, initialExcludeLetters));
     }
 }

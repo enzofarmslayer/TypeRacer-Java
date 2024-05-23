@@ -1,7 +1,5 @@
 package se.liu.enzcu445;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 /**
@@ -24,12 +22,9 @@ public class Timer {
 
     public Timer() {
 	// Set timer interval to 10 milliseconds (0.01 seconds)
-	swingTimer = new javax.swing.Timer(10, new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		hundredthsElapsed++;
-		tick();
-	    }
+	swingTimer = new javax.swing.Timer(10, e -> {
+	    hundredthsElapsed++;
+	    tick();
 	});
     }
 

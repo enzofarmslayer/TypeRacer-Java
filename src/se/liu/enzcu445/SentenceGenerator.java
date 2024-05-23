@@ -3,7 +3,6 @@ package se.liu.enzcu445;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -37,10 +36,6 @@ public class SentenceGenerator {
 	try {
 	    // Load JSON data from a resource
 	    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
-
-//	    if (inputStream == null) {
-//		throw new FileNotFoundException("File not found: " + jsonFilePath);
-//	    }
 
 	    // Use Gson to parse the JSON into a List of Strings
 	    InputStreamReader reader = new InputStreamReader(inputStream);

@@ -55,6 +55,7 @@ public class TextPanelComponent extends JPanel {
 	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludeLetters);
 	    typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
 	} catch (SentenceGeneratorException | TypingLogicException e) {
+	    LOGGER.severe("Failed to create inner components: " + e.getMessage());
 	    throw new TextPanelException("Failed to create inner components",e);
 	}
     }

@@ -39,6 +39,7 @@ public class SpeedtyperViewer extends JFrame {
 	try {
 	    textPanel = new TextPanelComponent(null, 20, ""); // Initially pass null
         } catch (TextPanelException e) {
+            LOGGER.severe("Failed to initialize TextPanelComponent: " + e.getMessage());
             showErrorDialog("Failed to initialize TextPanelComponent: " + e.getMessage());
             return;
         }

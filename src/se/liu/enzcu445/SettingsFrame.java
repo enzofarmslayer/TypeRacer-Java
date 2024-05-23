@@ -3,8 +3,6 @@ package se.liu.enzcu445;
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 /**
@@ -45,9 +43,9 @@ public class SettingsFrame extends JFrame {
 	// Add DocumentFilter to restrict input to English letters only
 	((AbstractDocument) excludeLettersField.getDocument()).setDocumentFilter(new DocumentFilter() {
 	    @Override
-	    public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
-		if (string != null && string.matches("[a-zA-Z]+")) {
-		    super.insertString(fb, offset, string, attr);
+	    public void insertString(FilterBypass fb, int offset, String excludedLetters, AttributeSet attr) throws BadLocationException {
+		if (excludedLetters != null && excludedLetters.matches("[a-zA-Z]+")) {
+		    super.insertString(fb, offset, excludedLetters, attr);
 		}
 	    }
 
@@ -61,16 +59,10 @@ public class SettingsFrame extends JFrame {
 
 	// Spara-knapp
 	JButton saveButton = new JButton("Save");
-	saveButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		saveSettings();
-	    }
-	});
+	saveButton.addActionListener(e -> saveSettings());
 	add(saveButton);
 
 	setLocationRelativeTo(null);
-	setVisible(true);
     }
 
     private void saveSettings() {

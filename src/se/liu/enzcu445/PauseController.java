@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class PauseController {
+
     private static final Logger LOGGER = LoggingConfig.getLogger();
     private boolean isPaused = false;
     private Timer timer;
@@ -39,6 +40,8 @@ public class PauseController {
     }
 
     public boolean isPaused() {
-	return isPaused;
+	if (isPaused)
+	    return true;
+	else return false;
     }
 }

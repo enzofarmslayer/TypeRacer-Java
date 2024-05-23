@@ -31,7 +31,7 @@ public class SessionCpmStatLabel extends AbstractStatLabel
 	    setText("Session CPM: --");
 	} else {
 	    double secondsElapsed = hundredthsElapsed / 100.0;
-	    double currentCpm = ((double) typedLength / secondsElapsed) * 60;
+	    double currentCpm = (typedLength / secondsElapsed) * 60;
 	    updateLabel("Session CPM: %.2f", currentCpm);
 	}
     }

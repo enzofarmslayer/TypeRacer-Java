@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 public class TypingLogicHandler {
     private static final Logger LOGGER = Logger.getLogger(TypingLogicHandler.class.getName());
 
+    // Fields used for typing
     private JTextPane textPane;
     private String targetSentence;
     private int typedLength = 0;
