@@ -1,6 +1,6 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.statlabels;
 
-import se.liu.enzcu445.typinglogic.FrameCloseListener;
+import se.liu.enzcu445.sentencedisplaylogic.FrameCloseListener;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,6 @@
-package se.liu.enzcu445.typinglogic;
+package se.liu.enzcu445.sentencedisplaylogic;
 
-import se.liu.enzcu445.sentencedisplaylogic.WrapEditorKit;
+import se.liu.enzcu445.customeditorkit.WrapEditorKit;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -35,7 +35,6 @@ public class TypingLogicHandler {
     private int typedLength = 0;
     private boolean freeze = false;
     private Set<Integer> errorPositions = new HashSet<>();
-    private boolean isFinished = false;
     private TypingEventListener typingEventListener;
     private boolean typingStarted = false;
 
@@ -104,7 +103,6 @@ public class TypingLogicHandler {
     public void resetVariables() {
 	typedLength = 0;
 	errorPositions.clear();
-	isFinished = false;
 	typingStarted = false;
 	freeze = false;
 	updateCaretPosition();
@@ -139,7 +137,6 @@ public class TypingLogicHandler {
 		typedLength++;
 		updateCaretPosition();
 		if (typedLength == targetSentence.length()) {
-		    isFinished = true;
 		    if (typingEventListener != null) {
 			typingEventListener.onTypingCompleted();
 		    }

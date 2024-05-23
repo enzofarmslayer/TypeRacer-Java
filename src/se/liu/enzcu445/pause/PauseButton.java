@@ -1,7 +1,6 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.pause;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.typinglogic.PauseController;
 
 import javax.swing.*;
 import java.util.logging.Logger;

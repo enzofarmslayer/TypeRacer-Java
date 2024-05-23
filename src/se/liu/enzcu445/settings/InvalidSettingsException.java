@@ -1,4 +1,4 @@
-package se.liu.enzcu445.sentencedisplaylogic;
+package se.liu.enzcu445.settings;
 
 import se.liu.enzcu445.AbstractTypingException;
 

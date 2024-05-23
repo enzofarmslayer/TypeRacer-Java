@@ -1,7 +1,6 @@
-package se.liu.enzcu445.sentencedisplaylogic;
+package se.liu.enzcu445.settings;
 
 import javax.swing.*;
-
 
 /**
  * SettingsButton is a custom JButton that opens a settings frame when clicked.
@@ -17,10 +16,22 @@ import javax.swing.*;
  */
 public class SettingsButton extends JButton {
 
+    private final SettingsListener settingsListener;
+    private final int initialWordCount;
+    private final String initialExcludeLetters;
+
     public SettingsButton(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
 	super("Settings");
 	setFocusable(false);
 
+	this.settingsListener = settingsListener;
+	this.initialWordCount = initialWordCount;
+	this.initialExcludeLetters = initialExcludeLetters;
+
+	setupButton();
+    }
+
+    private void setupButton() {
 	addActionListener(e -> new SettingsFrame(settingsListener, initialWordCount, initialExcludeLetters));
     }
 }

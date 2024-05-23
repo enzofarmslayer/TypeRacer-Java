@@ -1,10 +1,10 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.statlabels;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * TimerLabel is a custom JLabel that displays the elapsed time tracked by a {@link se.liu.enzcu445.typinglogic.Timer}.
+ * TimerLabel is a custom JLabel that displays the elapsed time tracked by a {@link se.liu.enzcu445.sentencedisplaylogic.Timer}.
  * It updates the label text to show the current elapsed time in minutes, seconds, and hundredths of a second.
  *
  * <p>Responsibilities:</p>
@@ -16,9 +16,9 @@ import java.awt.*;
  * @since 1.0
  */
 public class TimerLabel extends JLabel {
-    private se.liu.enzcu445.typinglogic.Timer timer;
+    private se.liu.enzcu445.sentencedisplaylogic.Timer timer;
 
-    public TimerLabel(se.liu.enzcu445.typinglogic.Timer timer) {
+    public TimerLabel(se.liu.enzcu445.sentencedisplaylogic.Timer timer) {
 	super("Time: 0:00.00", SwingConstants.CENTER);  // Set initial text and alignment
 	this.timer = timer;
 	setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));

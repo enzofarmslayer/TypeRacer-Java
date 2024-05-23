@@ -1,8 +1,8 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.statlabels;
 
 import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
-import se.liu.enzcu445.typinglogic.Timer;
-import se.liu.enzcu445.typinglogic.TypingLogicHandler;
+import se.liu.enzcu445.sentencedisplaylogic.Timer;
+import se.liu.enzcu445.sentencedisplaylogic.TypingLogicHandler;
 
 import java.awt.*;
 /**

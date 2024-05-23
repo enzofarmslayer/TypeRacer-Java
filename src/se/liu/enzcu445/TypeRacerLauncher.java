@@ -1,6 +1,6 @@
 package se.liu.enzcu445;
 
-import se.liu.enzcu445.visualcomponents.TypeRacerViewer;
+import se.liu.enzcu445.sentencedisplaylogic.TypeRacerViewer;
 
 import java.io.IOException;
 import java.util.logging.Level;

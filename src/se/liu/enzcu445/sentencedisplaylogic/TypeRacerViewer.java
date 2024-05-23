@@ -1,13 +1,15 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.sentencedisplaylogic.SettingsButton;
-import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
-import se.liu.enzcu445.sentencedisplaylogic.TextPanelException;
+import se.liu.enzcu445.statlabels.TimerLabel;
 import se.liu.enzcu445.keyboard.VisualKeyboardComponent;
-import se.liu.enzcu445.typinglogic.Timer;
-import se.liu.enzcu445.typinglogic.TypingEventHandler;
-import se.liu.enzcu445.typinglogic.PauseController;
+import se.liu.enzcu445.settings.SettingsButton;
+import se.liu.enzcu445.pause.PauseController;
+import se.liu.enzcu445.statlabels.AverageAccuracyStatLabel;
+import se.liu.enzcu445.statlabels.AverageCPMStatLabel;
+import se.liu.enzcu445.pause.PauseButton;
+import se.liu.enzcu445.statlabels.SessionAccuracyStatLabel;
+import se.liu.enzcu445.statlabels.SessionCpmStatLabel;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.statlabels;
 
 /**
  * The LabelUpdater interface defines a method for updating labels.

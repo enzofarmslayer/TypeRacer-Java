@@ -1,8 +1,7 @@
 package se.liu.enzcu445.sentencedisplaylogic;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.typinglogic.TypingEventListener;
-import se.liu.enzcu445.typinglogic.TypingLogicHandler;
+import se.liu.enzcu445.customeditorkit.WrapEditorKit;
 
 import javax.swing.*;
 import javax.swing.border.Border;

@@ -1,4 +1,4 @@
-package se.liu.enzcu445.sentencedisplaylogic;
+package se.liu.enzcu445.settings;
 
 import se.liu.enzcu445.LoggingConfig;
 
@@ -65,6 +65,7 @@ public class SettingsFrame extends JFrame {
 	add(saveButton);
 
 	setLocationRelativeTo(null);
+	setVisible(true);
     }
 
     private void saveSettings() {
@@ -84,15 +85,11 @@ public class SettingsFrame extends JFrame {
     }
 
     private int validateWordCount(String text) throws InvalidSettingsException {
-	try {
 	    int wordCount = Integer.parseInt(text);
 	    if (wordCount < 10 || wordCount > 200) {
 		throw new InvalidSettingsException("Word count must be between 10 and 200.");
 	    }
 	    return wordCount;
-	} catch (NumberFormatException e) {
-	    throw new InvalidSettingsException("Please enter a valid number of words between 10 and 200.");
-	}
     }
 
     private String validateExcludeLetters(String text) throws InvalidSettingsException {
