@@ -1,9 +1,8 @@
-package se.liu.enzcu445.logicalcomponents;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.exceptions.SentenceGeneratorException;
 
 import java.io.IOException;
 import java.io.InputStream;

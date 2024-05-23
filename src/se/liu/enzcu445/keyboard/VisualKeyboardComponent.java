@@ -1,4 +1,4 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.keyboard;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package se.liu.enzcu445.logicalcomponents;
+package se.liu.enzcu445.typinglogic;
 
 import se.liu.enzcu445.LoggingConfig;
 

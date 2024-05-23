@@ -1,7 +1,8 @@
 package se.liu.enzcu445.visualcomponents;
 
-import se.liu.enzcu445.logicalcomponents.Timer;
-import se.liu.enzcu445.logicalcomponents.TypingLogicHandler;
+import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
+import se.liu.enzcu445.typinglogic.Timer;
+import se.liu.enzcu445.typinglogic.TypingLogicHandler;
 
 /**
  * SessionCpmStatLabel is a concrete implementation of {@link AbstractStatLabel} that displays the session characters per minute (CPM).

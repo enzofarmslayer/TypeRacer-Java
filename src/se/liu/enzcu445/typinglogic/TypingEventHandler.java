@@ -1,12 +1,10 @@
-package se.liu.enzcu445.logicalcomponents;
+package se.liu.enzcu445.typinglogic;
 
-import se.liu.enzcu445.listener.SettingsListener;
-import se.liu.enzcu445.listener.TypingEventListener;
-import se.liu.enzcu445.listener.FrameCloseListener;
+import se.liu.enzcu445.sentencedisplaylogic.SettingsListener;
 import se.liu.enzcu445.visualcomponents.AbstractStatLabel;
+import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
 import se.liu.enzcu445.visualcomponents.PauseButton;
 import se.liu.enzcu445.visualcomponents.SessionStatsFrame;
-import se.liu.enzcu445.visualcomponents.TextPanelComponent;
 
 import java.util.logging.Logger;
 

@@ -1,4 +1,4 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.keyboard;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -65,21 +65,12 @@ public class CustomKeyComponent extends JComponent {
 	});
     }
 
-    //fel klass?
     private String getKeyStrokeStringForLabel(String label) {
-	// This is a simplified mapping, you should expand it based on your needs
-	switch (label) {
-	    case "Backspace":
-		return "BACK_SPACE";
-	    case "Space":
-		// For these keys, their Java KeyEvent.VK_* constants match their common name
-		return label.toUpperCase();
-	    case "Shift":
-		// Example of using a direct keycode, replace 192 with the actual keycode if different
-		//return KeyEvent.getKeyText(16); // You need to know the correct key code
-	    // Add specific cases for other special keys and international characters as needed
-	    default:
-		return label.toUpperCase();
+
+	if ("Backspace".equals(label)) {
+	    return "BACK_SPACE";
+	} else {
+	    return label.toUpperCase();
 	}
     }
 

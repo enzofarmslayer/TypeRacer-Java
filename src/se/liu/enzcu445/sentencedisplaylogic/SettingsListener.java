@@ -1,4 +1,4 @@
-package se.liu.enzcu445.listener;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 /**
  * The SettingsListener interface defines a method for responding to changes in settings.

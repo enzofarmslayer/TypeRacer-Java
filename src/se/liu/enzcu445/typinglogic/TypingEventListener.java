@@ -1,4 +1,4 @@
-package se.liu.enzcu445.listener;
+package se.liu.enzcu445.typinglogic;
 /**
  * The TypingEventListener interface defines methods for responding to typing events.
  * Implementing classes should provide specific logic for handling typing start and completion events.

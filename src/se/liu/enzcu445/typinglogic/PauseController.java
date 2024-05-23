@@ -1,7 +1,7 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.typinglogic;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.logicalcomponents.Timer;
+import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
 
 import java.util.logging.Logger;
 

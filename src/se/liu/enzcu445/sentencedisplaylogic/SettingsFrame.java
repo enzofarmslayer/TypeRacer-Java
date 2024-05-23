@@ -1,8 +1,6 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.listener.SettingsListener;
-import se.liu.enzcu445.exceptions.InvalidSettingsException;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -47,16 +45,16 @@ public class SettingsFrame extends JFrame {
 	// Add DocumentFilter to restrict input to English letters only
 	((AbstractDocument) excludeLettersField.getDocument()).setDocumentFilter(new DocumentFilter() {
 	    @Override
-	    public void insertString(FilterBypass fb, int offset, String excludedLetters, AttributeSet attr) throws BadLocationException {
+	    public void insertString(FilterBypass fb, int offset, String excludedLetters, AttributeSet attributeSet) throws BadLocationException {
 		if (excludedLetters != null && excludedLetters.matches("[a-zA-Z]+")) {
-		    super.insertString(fb, offset, excludedLetters, attr);
+		    super.insertString(fb, offset, excludedLetters, attributeSet);
 		}
 	    }
 
 	    @Override
-	    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+	    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attributeSet) throws BadLocationException {
 		if (text != null && text.matches("[a-zA-Z]+")) {
-		    super.replace(fb, offset, length, text, attrs);
+		    super.replace(fb, offset, length, text, attributeSet);
 		}
 	    }
 	});

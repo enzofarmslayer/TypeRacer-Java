@@ -1,6 +1,4 @@
-package se.liu.enzcu445.visualcomponents;
-
-import se.liu.enzcu445.listener.SettingsListener;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 import javax.swing.*;
 

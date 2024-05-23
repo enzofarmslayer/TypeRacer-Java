@@ -1,8 +1,6 @@
-package se.liu.enzcu445.logicalcomponents;
+package se.liu.enzcu445.typinglogic;
 
-import se.liu.enzcu445.customstyleeditor.WrapEditorKit;
-import se.liu.enzcu445.exceptions.TypingLogicException;
-import se.liu.enzcu445.listener.TypingEventListener;
+import se.liu.enzcu445.sentencedisplaylogic.WrapEditorKit;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -48,7 +46,7 @@ public class TypingLogicHandler {
     private double totalCPM = 0.0;
     private int sessionCount = 0;
 
-    public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) throws TypingLogicException {
+    public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) {
 	this.textPane = textPane;
 	this.targetSentence = sentence;
 	this.typingEventListener = typingEventListener;

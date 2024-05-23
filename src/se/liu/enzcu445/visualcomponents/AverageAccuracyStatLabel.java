@@ -1,6 +1,7 @@
 package se.liu.enzcu445.visualcomponents;
 
-import se.liu.enzcu445.logicalcomponents.TypingLogicHandler;
+import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
+import se.liu.enzcu445.typinglogic.TypingLogicHandler;
 
 /**
  * AverageAccuracyStatLabel is a concrete implementation of {@link AbstractStatLabel} that displays the average accuracy of typing.

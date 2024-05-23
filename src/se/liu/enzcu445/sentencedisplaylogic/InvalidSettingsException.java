@@ -1,6 +1,6 @@
-package se.liu.enzcu445.exceptions;
+package se.liu.enzcu445.sentencedisplaylogic;
 
-import se.liu.enzcu445.visualcomponents.AbstractTypingException;
+import se.liu.enzcu445.AbstractTypingException;
 
 /**
  * InvalidSettingsException is a custom exception that indicates invalid settings provided by the user.

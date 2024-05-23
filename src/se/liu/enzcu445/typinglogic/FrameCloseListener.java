@@ -1,4 +1,4 @@
-package se.liu.enzcu445.listener;
+package se.liu.enzcu445.typinglogic;
 
 /**
  * The FrameCloseListener interface defines a method for responding to frame close events.

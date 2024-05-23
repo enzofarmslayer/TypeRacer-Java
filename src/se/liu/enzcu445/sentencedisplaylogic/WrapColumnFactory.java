@@ -1,4 +1,4 @@
-package se.liu.enzcu445.customstyleeditor;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 import javax.swing.text.*;
 

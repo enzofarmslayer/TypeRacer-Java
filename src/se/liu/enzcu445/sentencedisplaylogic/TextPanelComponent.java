@@ -1,13 +1,8 @@
-package se.liu.enzcu445.visualcomponents;
+package se.liu.enzcu445.sentencedisplaylogic;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.listener.TypingEventListener;
-import se.liu.enzcu445.exceptions.TypingLogicException;
-import se.liu.enzcu445.logicalcomponents.TypingLogicHandler;
-import se.liu.enzcu445.customstyleeditor.WrapEditorKit;
-import se.liu.enzcu445.exceptions.SentenceGeneratorException;
-import se.liu.enzcu445.exceptions.TextPanelException;
-import se.liu.enzcu445.logicalcomponents.SentenceGenerator;
+import se.liu.enzcu445.typinglogic.TypingEventListener;
+import se.liu.enzcu445.typinglogic.TypingLogicHandler;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -57,11 +52,11 @@ public class TextPanelComponent extends JPanel {
 
 	try {
 	    sentenceGenerator = new SentenceGenerator("wordlist.json", wordCount, excludedLetters);
-	    typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
-	} catch (SentenceGeneratorException | TypingLogicException e) {
+	} catch (SentenceGeneratorException e) {
 	    LOGGER.severe("Failed to create inner components: " + e.getMessage());
 	    throw new TextPanelException("Failed to create inner components",e);
 	}
+	typingHandler = new TypingLogicHandler(sentencePane, generateSentence(), typingEventListener);
     }
 
     public void setTypingCompletionHandler(TypingEventListener typingEventListener) {

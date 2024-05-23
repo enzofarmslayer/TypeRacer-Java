@@ -1,9 +1,13 @@
 package se.liu.enzcu445.visualcomponents;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.exceptions.TextPanelException;
-import se.liu.enzcu445.logicalcomponents.Timer;
-import se.liu.enzcu445.logicalcomponents.TypingEventHandler;
+import se.liu.enzcu445.sentencedisplaylogic.SettingsButton;
+import se.liu.enzcu445.sentencedisplaylogic.TextPanelComponent;
+import se.liu.enzcu445.sentencedisplaylogic.TextPanelException;
+import se.liu.enzcu445.keyboard.VisualKeyboardComponent;
+import se.liu.enzcu445.typinglogic.Timer;
+import se.liu.enzcu445.typinglogic.TypingEventHandler;
+import se.liu.enzcu445.typinglogic.PauseController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,11 +27,11 @@ import java.util.logging.Logger;
  *
  * @since 1.0
  */
-public class SpeedtyperViewer extends JFrame {
+public class TypeRacerViewer extends JFrame {
     private static final Logger LOGGER = LoggingConfig.getLogger();
     private JFrame frame = new JFrame("SpeedTyper");
 
-    public SpeedtyperViewer() {
+    public TypeRacerViewer() {
     }
 
     private void setupFrame() {
@@ -77,21 +81,21 @@ public class SpeedtyperViewer extends JFrame {
         frame.add(topPanel, BorderLayout.NORTH);
 
         JPanel container = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 0.2;
-        gbc.fill = GridBagConstraints.BOTH;
-        container.add(textPanel, gbc);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        container.add(textPanel, gridBagConstraints);
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1.0;
-        gbc.weighty = 0.1;
-        gbc.fill = GridBagConstraints.BOTH;
-        container.add(new VisualKeyboardComponent(), gbc);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        container.add(new VisualKeyboardComponent(), gridBagConstraints);
 
         frame.add(container, BorderLayout.CENTER);
 

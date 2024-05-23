@@ -1,6 +1,6 @@
-package se.liu.enzcu445.exceptions;
+package se.liu.enzcu445.sentencedisplaylogic;
 
-import se.liu.enzcu445.visualcomponents.AbstractTypingException;
+import se.liu.enzcu445.AbstractTypingException;
 
 /**
  * TextPanelException is a custom exception that represents errors specific to the sentence generator in the application.
