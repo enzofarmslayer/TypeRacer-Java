@@ -38,9 +38,9 @@ public class SentenceGenerator {
 	    // Load JSON data from a resource
 	    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
 
-	    if (inputStream == null) {
-		throw new FileNotFoundException("File not found: " + jsonFilePath);
-	    }
+//	    if (inputStream == null) {
+//		throw new FileNotFoundException("File not found: " + jsonFilePath);
+//	    }
 
 	    // Use Gson to parse the JSON into a List of Strings
 	    InputStreamReader reader = new InputStreamReader(inputStream);
