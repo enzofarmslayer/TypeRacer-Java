@@ -27,8 +27,8 @@ public class SettingsViewer
     private final String initialExcludeLetters;
     private JTextField wordCountField = null;
     private JTextField excludeLettersField = null;
-    private SettingsListener settingsListener;
-    private JFrame frame;
+    private SettingsListener settingsListener = null;
+    private JFrame frame = null;
     private static final int SETTINGS_FRAME_WIDTH = 300;
     private static final int SETTINGS_FRAME_HEIGHT = 200;
     private static final int SETTINGS_FRAME_ROWS = 3;

@@ -19,10 +19,9 @@ public class SessionStatsViewer {
     private static final int SESSION_STATS_FRAME_ROWS = 2;
     private static final int SESSION_STATS_FRAME_COLUMNS = 1;
 
-    AbstractStatLabel sessionAccuracyLabel;
-    AbstractStatLabel sessionCpmLabel;
-    FrameCloseListener listener;
-
+    private AbstractStatLabel sessionAccuracyLabel = null;
+    private AbstractStatLabel sessionCpmLabel = null;
+    private FrameCloseListener listener= null;
     private JFrame frame = null;
 
     public SessionStatsViewer(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
