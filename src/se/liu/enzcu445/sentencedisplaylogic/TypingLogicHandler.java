@@ -44,6 +44,9 @@ public class TypingLogicHandler {
     private int accuracyCount;
     private double totalCPM = 0.0;
     private int sessionCount = 0;
+    private static final double DEFAULT_ACCURACY = 100.0;
+    private static final double DEFAULT_CPM = 0.0;
+    private static final int PROCENTIGE_MULTIPLIER = 100;
 
     public TypingLogicHandler(JTextPane textPane, String sentence, TypingEventListener typingEventListener) {
 	this.textPane = textPane;
@@ -171,10 +174,10 @@ public class TypingLogicHandler {
     public double calculateAccuracy() {
 	int totalKeyPresses = typedLength;
 	if (totalKeyPresses == 0) {
-	    return 100.0; // If nothing typed yet, accuracy is 100%
+	    return DEFAULT_ACCURACY; // If nothing typed yet, accuracy is 100%
 	}
 	int correctKeyPresses = totalKeyPresses - getTypingErrorCount();
-	currentAccuracy = ((double) correctKeyPresses / totalKeyPresses) * 100;
+	currentAccuracy = ((double) correctKeyPresses / totalKeyPresses) * PROCENTIGE_MULTIPLIER;
 	return currentAccuracy;
     }
 
@@ -186,7 +189,7 @@ public class TypingLogicHandler {
 
     public double calculateAverageAccuracy() {
 	if (accuracyCount == 0) {
-	    return 100.0; // Default to 100% if no accuracy records
+	    return DEFAULT_ACCURACY; // Default to 100% if no accuracy records
 	}
 	return sumAccuracy / accuracyCount;
     }
@@ -198,7 +201,7 @@ public class TypingLogicHandler {
 
     public double calculateAverageCpm() {
 	if (sessionCount == 0) {
-	    return 0.0;
+	    return DEFAULT_CPM;
 	}
 	return totalCPM / sessionCount;
     }

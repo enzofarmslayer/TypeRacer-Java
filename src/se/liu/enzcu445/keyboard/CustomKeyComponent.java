@@ -33,10 +33,10 @@ public class CustomKeyComponent extends JComponent {
 	else {
 	    setPreferredSize(new Dimension(50, 50)); // Default size for other keys
 	}
-	setupKeyBindings();
+	initializeKeyBindings();
     }
 
-    private void setupKeyBindings() {
+    private void initializeKeyBindings() {
 	InputMap inputMap = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 	ActionMap actionMap = getActionMap();
 

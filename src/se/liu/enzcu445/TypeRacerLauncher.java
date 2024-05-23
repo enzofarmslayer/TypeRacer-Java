@@ -29,7 +29,7 @@ public class TypeRacerLauncher
 
     public static void main(String[] args) {
 	try {
-	    LoggingConfig.setup();
+	    LoggingConfig.initialize();
 	    LOGGER.info("Program starts...");
 
 	    TypeRacerViewer viewer = new TypeRacerViewer();

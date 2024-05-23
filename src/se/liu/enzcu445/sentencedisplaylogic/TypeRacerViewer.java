@@ -1,7 +1,6 @@
 package se.liu.enzcu445.sentencedisplaylogic;
 
 import se.liu.enzcu445.LoggingConfig;
-import se.liu.enzcu445.statlabels.TimerLabel;
 import se.liu.enzcu445.keyboard.VisualKeyboardComponent;
 import se.liu.enzcu445.settings.SettingsButton;
 import se.liu.enzcu445.pause.PauseController;
@@ -36,7 +35,7 @@ public class TypeRacerViewer extends JFrame {
     public TypeRacerViewer() {
     }
 
-    private void setupFrame() {
+    private void initializeFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 
@@ -110,7 +109,7 @@ public class TypeRacerViewer extends JFrame {
     }
 
     public void show() {
-        setupFrame();
+        initializeFrame();
         frame.setVisible(true);
         LOGGER.info("Main frame of SpeedTyper shown.");
     }

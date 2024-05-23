@@ -14,14 +14,19 @@ import java.awt.event.WindowEvent;
  * @since 1.0
  */
 public class SessionStatsFrame extends JFrame {
+    private static final int SESSIONSTATSFRAME_WIDTH = 300;
+    private static final int SESSIONSTATSFRAME_HEIGHT = 200;
+    private static final int SESSIONSTATSFRAME_ROWS = 2;
+    private static final int SESSIONSTATSFRAME_COLUMNS = 1;
+
     public SessionStatsFrame(AbstractStatLabel sessionAccuracyLabel, AbstractStatLabel sessionCpmLabel, FrameCloseListener listener) {
 	setTitle("Session Stats");
-	setSize(300, 200);
+	setSize(SESSIONSTATSFRAME_WIDTH, SESSIONSTATSFRAME_HEIGHT);
 	setLocationRelativeTo(null);
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	JPanel panel = new JPanel();
-	panel.setLayout(new GridLayout(2, 1));
+	panel.setLayout(new GridLayout(SESSIONSTATSFRAME_ROWS, SESSIONSTATSFRAME_COLUMNS));
 
 	panel.add(sessionCpmLabel);
 	panel.add(sessionAccuracyLabel);

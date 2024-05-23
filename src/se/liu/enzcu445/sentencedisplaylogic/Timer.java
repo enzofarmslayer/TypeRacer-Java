@@ -1,7 +1,6 @@
 package se.liu.enzcu445.sentencedisplaylogic;
 
 import se.liu.enzcu445.LoggingConfig;
-
 import java.util.logging.Logger;
 
 /**
@@ -21,6 +20,7 @@ public class Timer {
     private static final Logger LOGGER = LoggingConfig.getLogger();
     private int hundredthsElapsed = 0;
     private javax.swing.Timer swingTimer;
+    private Runnable tickObserver = null;
 
     public Timer() {
 	// Set timer interval to 10 milliseconds (0.01 seconds)
@@ -30,8 +30,14 @@ public class Timer {
 	});
     }
 
+    public void setTickObserver(Runnable observer) {
+	this.tickObserver = observer;
+    }
+
     protected void tick() {
-	// Notify observers (if any) each 0.01 second
+	if (tickObserver != null) {
+	    tickObserver.run();
+	}
     }
 
     public void start() {

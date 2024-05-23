@@ -12,7 +12,4 @@ public abstract class AbstractTypingException extends Exception {
 	super(message, cause);
     }
 
-    protected AbstractTypingException(String message) {
-	super(message);
-    }
 }

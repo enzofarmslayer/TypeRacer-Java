@@ -25,12 +25,20 @@ public class SettingsFrame extends JFrame {
     private JTextField wordCountField;
     private JTextField excludeLettersField;
     private SettingsListener settingsListener;
+    private static final int SETTINGSFRAME_WIDTH = 300;
+    private static final int SETTINGSFRAME_HEIGHT = 200;
+    private static final int SETTINGSFRAME_ROWS = 3;
+    private static final int SETTINGSFRAME_COLUMNS = 2;
+    private static final int LOWEST_WORD_COUNT = 10;
+    private static final int HIGHEST_WORD_COUNT = 200;
+
+
 
     public SettingsFrame(SettingsListener settingsListener, int initialWordCount, String initialExcludeLetters) {
 	this.settingsListener = settingsListener;
 	setTitle("Settings");
-	setSize(300, 200);
-	setLayout(new GridLayout(3, 2));
+	setSize(SETTINGSFRAME_WIDTH, SETTINGSFRAME_HEIGHT);
+	setLayout(new GridLayout(SETTINGSFRAME_ROWS, SETTINGSFRAME_COLUMNS));
 
 	// Antal ord inställningar
 	add(new JLabel("Number of words:"));
@@ -86,7 +94,7 @@ public class SettingsFrame extends JFrame {
 
     private int validateWordCount(String text) throws InvalidSettingsException {
 	    int wordCount = Integer.parseInt(text);
-	    if (wordCount < 10 || wordCount > 200) {
+	    if (wordCount < LOWEST_WORD_COUNT || wordCount > HIGHEST_WORD_COUNT) {
 		throw new InvalidSettingsException("Word count must be between 10 and 200.");
 	    }
 	    return wordCount;

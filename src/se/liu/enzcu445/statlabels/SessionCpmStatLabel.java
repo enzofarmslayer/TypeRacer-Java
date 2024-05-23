@@ -14,6 +14,8 @@ import se.liu.enzcu445.sentencedisplaylogic.TypingLogicHandler;
 public class SessionCpmStatLabel extends AbstractStatLabel
 {
     private Timer timer;
+    private static final int SECONDSINMINUTE = 60;
+    private static final double HUNDREDSINSECOND = 100;
 
     public SessionCpmStatLabel(TextPanelComponent textPanelComponent, Timer timer) {
 	super(textPanelComponent, "Session CPM: --");
@@ -34,8 +36,8 @@ public class SessionCpmStatLabel extends AbstractStatLabel
 	if (hundredthsElapsed == 0) {
 	    setText("Session CPM: --");
 	} else {
-	    double secondsElapsed = hundredthsElapsed / 100.0;
-	    double currentCpm = (typedLength / secondsElapsed) * 60;
+	    double secondsElapsed = hundredthsElapsed / HUNDREDSINSECOND;
+	    double currentCpm = (typedLength / secondsElapsed) * SECONDSINMINUTE;
 	    updateLabel("Session CPM: %.2f", currentCpm);
 	}
     }

@@ -14,6 +14,8 @@ import java.awt.*;
 public class AverageCPMStatLabel extends AbstractStatLabel
 {
     private Timer timer;
+    private static final double HUNDREDSINSECOND = 100.0;
+    private static final int SECONDSINMINUTE = 60;
 
     public AverageCPMStatLabel(TextPanelComponent textPanelComponent, Timer timer) {
 	super(textPanelComponent, "Average CPM: --");
@@ -29,8 +31,8 @@ public class AverageCPMStatLabel extends AbstractStatLabel
 	    setText("Average CPM: --");
 	    setBackground(Color.WHITE);
 	} else {
-	    double secondsElapsed = hundredthsElapsed / 100.0;
-	    double currentCPM = (typedLength / secondsElapsed) * 60;
+	    double secondsElapsed = hundredthsElapsed / HUNDREDSINSECOND;
+	    double currentCPM = (typedLength / secondsElapsed) * SECONDSINMINUTE;
 	    typingHandler.saveCurrentCPM(currentCPM);
 	    double averageCPM = typingHandler.calculateAverageCpm();
 	    updateLabel("Average CPM: %.2f", averageCPM);

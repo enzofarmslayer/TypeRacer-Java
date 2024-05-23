@@ -21,7 +21,7 @@ import java.util.logging.SimpleFormatter;
 public class LoggingConfig {
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-    public static void setup() throws IOException {
+    public static void initialize() throws IOException {
 	Logger rootLogger = Logger.getLogger("");
 	FileHandler fileHandler = new FileHandler("app.log", true);
 	fileHandler.setFormatter(new SimpleFormatter());
