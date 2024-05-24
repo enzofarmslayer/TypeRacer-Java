@@ -68,6 +68,12 @@ public class SentenceGenerator {
 	return excludeLetters;
     }
 
+    /**
+     * Generates a random sentence with the specified number of words.
+     * Filters out words containing excluded letters before generating the sentence.
+     *
+     * @return A generated sentence with the specified number of words.
+     */
     public String generateSentence() {
 	if (words == null || words.isEmpty()) {
 	    LOGGER.info("No words available for sentence generation: Word list is empty or not loaded.");
@@ -101,6 +107,13 @@ public class SentenceGenerator {
 	return sentence.toString().trim() + ".";
     }
 
+    /**
+     * Checks if a word contains any of the excluded letters.
+     *
+     * @param word The word to check.
+     * @param excludeLetters The string of letters to exclude.
+     * @return true if the word contains any of the excluded letters, false otherwise.
+     */
     private boolean containsExcludedLetters(String word, String excludeLetters) {
 	for (char c : excludeLetters.toLowerCase().toCharArray()) {
 	    if (word.toLowerCase().indexOf(c) != -1) {

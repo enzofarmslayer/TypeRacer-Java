@@ -21,6 +21,12 @@ import java.util.logging.SimpleFormatter;
 public class LoggingConfig {
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Initializes the logging configuration for the application.
+     * This method sets up a file handler to log messages to a file with a simple formatter.
+     *
+     * @throws IOException if there are issues creating or accessing the log file.
+     */
     public static void initialize() throws IOException {
 	Logger rootLogger = Logger.getLogger("");
 	FileHandler fileHandler = new FileHandler("app.log", true);

@@ -21,12 +21,12 @@ public class VisualKeyboardComponent extends JPanel {
     private Map<String, CustomKeyComponent> keyComponents;
 
     public VisualKeyboardComponent() {
-	setLayout(new GridLayout(0, 1)); // Rows, 1 column to stack row panels
+	setLayout(new GridLayout(0, 1)); /** Rows, 1 column to stack row panels **/
 
-	// Initialize the keyComponents map
+	/** Initialize the keyComponents map **/
 	keyComponents = new HashMap<>();
 
-	//keyboard layout
+	/** keyboard layout **/
 	String[][] keyRows = {
 		{"§", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "´", "Backspace"},
 		{"Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Å", "^", "*"},

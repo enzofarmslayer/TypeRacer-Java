@@ -35,7 +35,7 @@ public class TextPanelComponent extends JPanel {
 	sentencePane.setPreferredSize(new Dimension(800, 200));  // Adjust size as needed
 	sentencePane.setBackground(Color.WHITE);
 
-	// Set the editor kit to enable wrapping
+	/** Set the editor kit to enable wrapping **/
 	sentencePane.setEditorKit(new WrapEditorKit());
 
 	SimpleAttributeSet simpleAttribute = new SimpleAttributeSet();

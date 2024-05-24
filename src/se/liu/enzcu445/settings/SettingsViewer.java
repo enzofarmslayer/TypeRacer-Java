@@ -47,17 +47,20 @@ public class SettingsViewer
 	frame.setSize(SETTINGS_FRAME_WIDTH, SETTINGS_FRAME_HEIGHT);
 	frame.setLayout(new GridLayout(SETTINGS_FRAME_ROWS, SETTINGS_FRAME_COLUMNS));
 
-	// Antal ord inställningar
+	/** Number of words settings **/
 	frame.add(new JLabel("Number of words:"));
 	wordCountField = new JTextField(String.valueOf(initialWordCount));
 	frame.add(wordCountField);
 
-	// Uteslut bokstäver inställningar
+	/** Exclude letters settings **/
 	frame.add(new JLabel("Exclude letters:"));
 	excludeLettersField = new JTextField(initialExcludeLetters);
 	frame.add(excludeLettersField);
 
-	// Add DocumentFilter to restrict input to English letters only
+	/**
+	 * Adds a DocumentFilter to restrict input to English letters only.
+	 * This filter ensures that only alphabetic characters (a-z, A-Z) are allowed in the excludeLettersField.
+	 */
 	((AbstractDocument) excludeLettersField.getDocument()).setDocumentFilter(new DocumentFilter() {
 	    @Override
 	    public void insertString(FilterBypass fb, int offset, String excludedLetters, AttributeSet attribute) throws BadLocationException {
@@ -74,7 +77,7 @@ public class SettingsViewer
 	    }
 	});
 
-	// Spara-knapp
+	/** Save Settings Button **/
 	JButton saveButton = new JButton("Save");
 	saveButton.addActionListener(e -> saveSettings());
 	frame.add(saveButton);
@@ -82,15 +85,18 @@ public class SettingsViewer
 	frame.setLocationRelativeTo(null);
     }
 
+    /**
+     * Saves the settings entered by the user.
+     * This method validates the word count and excluded letters, notifies the listener of the new settings,
+     * and closes the settings frame.
+     */
     private void saveSettings() {
 	try {
 	    int wordCount = validateWordCount(wordCountField.getText());
 	    String excludeLetters = validateExcludeLetters(excludeLettersField.getText());
 
-	    // Meddela lyssnaren om de nya inställningarna
 	    settingsListener.onSettingsChanged(wordCount, excludeLetters);
 
-	    // Stäng inställningsramen
 	    frame.dispose();
 	} catch (InvalidSettingsException e) {
 	    LOGGER.warning("Invalid settings: " + e.getMessage());
@@ -98,6 +104,14 @@ public class SettingsViewer
 	}
     }
 
+    /**
+     * Validates the word count entered by the user.
+     * Ensures that the word count is within the allowed range.
+     *
+     * @param text The word count as a string.
+     * @return The validated word count as an integer.
+     * @throws InvalidSettingsException if the word count is not within the allowed range.
+     */
     private int validateWordCount(String text) throws InvalidSettingsException {
 	int wordCount = Integer.parseInt(text);
 	if (wordCount < LOWEST_WORD_COUNT || wordCount > HIGHEST_WORD_COUNT) {
@@ -106,6 +120,14 @@ public class SettingsViewer
 	return wordCount;
     }
 
+    /**
+     * Validates the excluded letters entered by the user.
+     * Ensures that the excluded letters field contains only English letters.
+     *
+     * @param text The excluded letters as a string.
+     * @return The validated excluded letters string.
+     * @throws InvalidSettingsException if the excluded letters contain non-alphabetic characters.
+     */
     private String validateExcludeLetters(String text) throws InvalidSettingsException {
 	if (text.matches("[a-zA-Z]*")) {
 	    return text;

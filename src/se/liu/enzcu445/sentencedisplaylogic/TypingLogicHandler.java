@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 public class TypingLogicHandler {
     private static final Logger LOGGER = Logger.getLogger(TypingLogicHandler.class.getName());
 
-    // Fields used for typing
+    /** Fields used for typing **/
     private JTextPane textPane;
     private String targetSentence;
     private int typedLength = 0;
@@ -38,7 +38,7 @@ public class TypingLogicHandler {
     private TypingEventListener typingEventListener;
     private boolean typingStarted = false;
 
-    // Fields for accuracy and CPM calculations
+    /** Fields for accuracy and CPM calculations **/
     private double currentAccuracy;
     private double sumAccuracy;
     private int accuracyCount;
@@ -56,11 +56,11 @@ public class TypingLogicHandler {
 	this.sumAccuracy = 0.0;
 	this.accuracyCount = 0;
 
-	// Set the editor kit to enable wrapping
+	/** Set the editor kit to enable wrapping **/
 	textPane.setEditorKit(new WrapEditorKit());
 
 	if (this.targetSentence.equals("No words available for sentence generation.")) {
-	    this.freeze = true; // Freeze the typing logic
+	    this.freeze = true; /** Freeze the typing logic **/
 	}
 
 	displaySentence();
@@ -68,13 +68,13 @@ public class TypingLogicHandler {
 	textPane.addKeyListener(new KeyAdapter() {
 	    @Override
 	    public void keyTyped(KeyEvent e) {
-		if (!freeze) { // Check if typing is paused through PauseController
+		if (!freeze) { /** Check if typing is paused through PauseController **/
 		    handleKeyTyped(e);
 		}
 	    }
 	});
 
-	// Initial caret position
+	/** Initial caret position **/
 	textPane.setCaretPosition(typedLength);
     }
 
@@ -86,6 +86,10 @@ public class TypingLogicHandler {
 	freeze = freezeCondition;
     }
 
+    /**
+     * Displays the target sentence in the JTextPane.
+     * This method clears the current content, centers the text, and inserts the new target sentence.
+     */
     public void displaySentence() {
 	try {
 	    StyledDocument doc = textPane.getStyledDocument();
@@ -124,6 +128,13 @@ public class TypingLogicHandler {
 	setTargetSentence(newTargetSentence);
     }
 
+    /**
+     * Handles the key typed event.
+     * This method checks the typed character against the target sentence, updates the display,
+     * and notifies listeners of typing progress.
+     *
+     * @param e The KeyEvent representing the key typed by the user.
+     */
     private void handleKeyTyped(KeyEvent e) {
 	if (!typingStarted) {
 	    typingStarted = true;
@@ -152,6 +163,13 @@ public class TypingLogicHandler {
 	}
     }
 
+    /**
+     * Applies a given style to a character at the specified position.
+     * This method changes the foreground color of the character to the specified color.
+     *
+     * @param position The position of the character to style.
+     * @param color The color to apply to the character.
+     */
     private void applyStyleToChar(int position, Color color) {
 	SimpleAttributeSet simpleAttribute = new SimpleAttributeSet();
 	StyleConstants.setForeground(simpleAttribute, color);

@@ -60,7 +60,6 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
 	sessionCpmLabel.update();
 	pauseButton.disableButton();
 
-	// Create and display the session stats frame
 	SessionStatsViewer statsFrame = new SessionStatsViewer(sessionAccuracyLabel, sessionCpmLabel, this);
 	statsFrame.show();
 	LOGGER.info("SessionStatsFrame is visible");
@@ -69,20 +68,17 @@ public class TypingEventHandler implements TypingEventListener, FrameCloseListen
     @Override
     public void onFrameClosed() {
 	LOGGER.info("SessionStatsFrame has closed");
-	// Reset necessary variables
+
 	TypingLogicHandler typingHandler = textPanel.getTypingHandler();
 	typingHandler.resetVariables();
 
-	// Generate a new sentence
 	String newSentence = textPanel.getSentenceGenerator().generateSentence();
 	typingHandler.setTargetSentence(newSentence);
 
-	// Reset the display sentence in the text panel
 	textPanel.resetDisplaySentence();
 
 	timer.reset();
 
-	// Enable the pause button
 	pauseButton.enableButton();
     }
 
